@@ -1,3 +1,5 @@
-
 class PantariPersonalityController < PantariController
   
+
+
+end
