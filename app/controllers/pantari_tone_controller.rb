@@ -1,5 +1,0 @@
-class PantariToneController < PantariController
-  
-
-
-end  

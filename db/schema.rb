@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20170209203250) do
 
-  create_table "pantari_personality_analyses", force: :cascade do |t|
+  create_table "person_analyses", force: :cascade do |t|
     t.string  "author"
     t.integer "user_id"
     t.integer "word_count"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170209203250) do
     t.integer "self_transcendence"
   end
 
-  create_table "pantari_tone_analyses", force: :cascade do |t|
+  create_table "the_tone_analyses", force: :cascade do |t|
     t.string  "author"
     t.integer "user_id"
     t.integer "anger"

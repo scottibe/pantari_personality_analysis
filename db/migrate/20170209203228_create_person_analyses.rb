@@ -1,6 +1,6 @@
-class CreatePantariPersonalityAnalyses < ActiveRecord::Migration
+class CreatePersonAnalyses < ActiveRecord::Migration
   def change
-    create_table :pantari_personality_analyses do |t|
+    create_table :person_analyses do |t|
       t.string :author
       t.integer :user_id
       t.integer :word_count
@@ -26,6 +26,7 @@ class CreatePantariPersonalityAnalyses < ActiveRecord::Migration
       t.integer :hedonism
       t.integer :self_enhancement
       t.integer :self_transcendence
+      t.datetime
     end 
   end
 end

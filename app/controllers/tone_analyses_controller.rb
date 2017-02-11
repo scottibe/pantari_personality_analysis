@@ -1,0 +1,5 @@
+class ToneAnalysesController < PantariController
+  
+
+
+end  

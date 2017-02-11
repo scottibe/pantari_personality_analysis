@@ -1,6 +1,6 @@
-class CreatePantariToneAnalyses < ActiveRecord::Migration
+class CreateTheToneAnalyses < ActiveRecord::Migration
   def change
-    create_table :pantari_tone_analyses do |t|
+    create_table :the_tone_analyses do |t|
       t.string :author
       t.integer :user_id
       t.integer :anger
