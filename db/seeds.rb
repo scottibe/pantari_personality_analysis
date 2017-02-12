@@ -6,25 +6,25 @@ PersonAnalysis.destroy_all
 TheToneAnalysis.destroy_all
 
 bewick = PersonalityApiCaller.new(File.open("/Users/scottbewick/Development/code/mytext.rtf", "r"))
-@sbews = PersonAnalysis.create(bewick.scores_to_hash)
+PersonAnalysis.create(bewick.scores_to_hash)
                 
 tweeter = TwitterApiCall.new
 tweet_text = tweeter.user_tweets('thomasbews')
 thomas = PersonalityApiCaller.new(tweet_text).scores_to_hash
-@thomasbews = PersonAnalysis.create(thomas)
+PersonAnalysis.create(thomas)
 
 tweeter = TwitterApiCall.new
 tweet_text = tweeter.user_tweets('realdonaldtrump')
 trump = PersonalityApiCaller.new(tweet_text).scores_to_hash
-@trumples = PersonAnalysis.create(trump)
+PersonAnalysis.create(trump)
 
 tweeter = TwitterApiCall.new
 tweet_text = tweeter.user_tweets('sarahksilverman')
 silver = ToneApiCaller.new(tweet_text).scores_to_hash
-@sarah = TheToneAnalysis.create(silver)
+TheToneAnalysis.create(silver)
    
 bewster = ToneApiCaller.new(File.open("/Users/scottbewick/Development/code/mytext.rtf", "r"))
-@scotty = TheToneAnalysis.create(bewster.scores_to_hash)                
+TheToneAnalysis.create(bewster.scores_to_hash)                
 
 @abby = User.create(:username => 'abbyibe', :email => 'abby@abby.com', :password => 'abby')
 

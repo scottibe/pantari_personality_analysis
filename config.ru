@@ -5,6 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
-run PantariController
-use PantariPersonalityController
-use PantariToneController
+run PantariApplicationController
+use PersonalityAnalysesController
+use ToneAnalysesController
+use UsersController

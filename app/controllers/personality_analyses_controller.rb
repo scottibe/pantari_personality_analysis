@@ -1,4 +1,4 @@
-class PersonalityAnalysesController < PantariController
+class PersonalityAnalysesController < PantariApplicationController
   
 
 

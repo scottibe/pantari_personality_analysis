@@ -1,4 +1,4 @@
-class ToneAnalysesController < PantariController
+class ToneAnalysesController < PantariApplicationController
   
 
 
