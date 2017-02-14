@@ -2,13 +2,12 @@ class UsersController < PantariApplicationController
 #shotgun --server=thin --port=9494 config.ru
   get '/users/:slug' do 
     @user = User.find_by_slug(params[:slug])
-    @user.person_alayses
-    erb :'users/show'
+    @user.person_analyses
+    erb :home
   end  
 
   get '/signup' do
-    session.clear
-    if logged_in?
+    if logged_in? 
       redirect '/analyses'
     else
       erb :'users/create_user'
@@ -20,7 +19,6 @@ class UsersController < PantariApplicationController
       redirect '/signup'
     else   
     @user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
-    @user.save
     session[:user_id] = @user.id 
     redirect to '/analyses'
     end 
@@ -37,6 +35,7 @@ class UsersController < PantariApplicationController
   post '/login' do
     @user = User.find_by(:username => params[:username])
     if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
       redirect to '/analyses'
     else
       redirect to '/login' 

@@ -22,11 +22,14 @@ class PantariApplicationController < Sinatra::Base
   get '/analyses' do
     if logged_in?
       @user = User.find_by_id(session[:user_id])
-      @analysis = PersonAnalysis.create(PersonalityApiCaller.new(File.open("/Users/scottbewick/Development/code/mytext.rtf", "r")).scores_to_hash)
-      #@analysis.author = PersonAnalysis.find_by(:author => params[:author])
-      @analysis.user_id = session[:user_id]
-      @analysis
-      erb :home
+      #need to create a list of analyses by author
+      # PersonAnalysis.all.each do |analysis|
+      #   if analysis.user_id == @user.id
+      #     @user.person_analyses << analysis
+      #   else
+      #     nil
+      #   end                     
+      erb :home 
     else
       redirect to '/login'   
     end  

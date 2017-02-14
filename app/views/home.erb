@@ -1,13 +1,14 @@
 <h1>Welome, <%= @user.username %> </h1><br><br>
-<h3>Here are your previous Pantari Analyses</h4>
+<h2>Here are your previous Pantari Analyses</h2>
 
-<br>
-<h5>Personality Analyses</h5>
-  <%=@analyes.each do |analysis| %>
-    analysis.author
-  
+   
+  <h2>Need List of Analyses by Author</h2>
   
 
 
 <h5>Tone Analyses</h5>
    
+
+  <a href="/personality_analyses/new">Analyze Personality</a>&nbsp;  &nbsp;
+  <a href="/tone_analyses/new">Analyze Tone</a>&nbsp;  &nbsp;
+  <a href="/logout">Log Out</a>
