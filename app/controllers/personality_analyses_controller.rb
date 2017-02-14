@@ -2,25 +2,58 @@ class PersonalityAnalysesController < PantariApplicationController
 
   get '/personality_analyses/new' do 
     if logged_in?
-      erb :'personality_analyses/new'
+      erb :'personality_analyses/new_personality'
     else
       redirect to '/login' 
     end
   end
 
-  post '/personality_analyses' do 
-    if params[:author] == "" || params[:author] == nil
+  post '/text_analyses' do 
+    if params[:text_author] == "" || params[:text_author] == nil
+      puts "Please enter the author of the text"
       redirect to "/personality_analyses/new"
     elsif
-      params[:text_input] == "" || params[:text_input] == nil 
-      return "Error write error message"  
-  end      
+      params[:text_analysis] == "" && params[:text_analysis] == nil
+      puts "Please enter text or a Twitter username"
+      redirect to "/personality_analyses/new"
+    else
+      analysis = PersonalityApiCaller.new(params[:text_analysis]).scores_to_hash
+      @personality = PersonAnalysis.create(analysis)
+      @personality.author = params[:author_text]
+      @personality.user_id = session[:user_id]
+      @personality.save
+       
+    end  
+  end   
 
-  get 'personality_analyses/:id'
-    
+  post '/twitter_analyses' do 
+    if params[:tweeter] == "" || params[:tweeter] == nil
+      puts "Please enter the name of the Twitter User"
+      redirect to "/personality_analyses/new"
+    elsif
+      params[:twitter_analysis] == "" && params[:twitter_analysis] == nil
+      puts "Please enter a Twitter username"
+      redirect to "/personality_analyses/new"
+    else
+      tweeter = TwitterApiCall.new
+      tweet_text = tweeter.user_tweets(params[:twitter_analysis])
+      analysis = PersonalityApiCaller.new(tweet_text).scores_to_hash
+      @personality = PersonAnalysis.create(analysis)
+      @personality.author = params[:tweeter]
+      @personality.user_id = session[:user_id]
+      @personality.save
+    end  
+    redirect to "/personality_analyses/#{@personality.id}"
+  end 
+
+
+
+  get 'personality_analyses/:id' do
+
+    erb :'/personality_analyses/show_personality'
   end
     
-  end
+
 
 
 

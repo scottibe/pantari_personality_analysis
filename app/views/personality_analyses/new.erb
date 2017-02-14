@@ -6,10 +6,23 @@
 </head>
 <body>
 <h1>Pantari Personality Analysis - Analyze Anyone's Personality</h1>
-  <form action="/" method="POST">
-    <input type="text" name="text_analysis"><br><br>
-    <p><strong>Phone Number (Optional - Just type in a 10-digit telephone number)<br><br>
-    <input type="text" name="phone_number"></strong></p>
-   <input value="submit" type="submit">
+
+<h3>Personality Analysis by Text</h3>
+
+  <p>Enter the text you wish to analyze in the box and the name of the author of the text in the author box.</p>  
+  <form action="/text_analyses" method="POST">
+    <input type="text" name="text_analysis" placeholder="enter text here"><br><br>
+    <input type="text" name="text_author" placeholder="author"><br><br>
+    <input type="submit" value="Get Personality Analysis"><br><br>
+  </form>  
+  
+  <h3>Peronality Analysis by Twitter Username</h3>
+    
+    <p>Enter a twitter username in the twitter field to recieve a personality analysis of that user. Write the User's name in the author box.
+    <form action="/twitter_analyses" method="POST">
+    <input type="text" name="twitter_analysis" placeholder="enter username"><br><br>
+    <input type="text" name="tweeter" placeholder="tweeter"><br><br>
+    <input type="submit" value="Get Twitter Personality Analysis"><br><br>
+  </form>
 </body>
 </html>
