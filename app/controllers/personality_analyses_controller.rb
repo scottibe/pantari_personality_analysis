@@ -18,6 +18,7 @@ class PersonalityAnalysesController < PantariApplicationController
       redirect to "/personality_analyses/new"
     else
       analysis = PersonalityApiCaller.new(params[:text_analysis]).scores_to_hash
+      @submitted_text = params[:text_analysis]
       @analysis = PersonAnalysis.create(analysis)
       @analysis.author = params[:text_author]
       @analysis.user_id = session[:user_id]
@@ -37,6 +38,7 @@ class PersonalityAnalysesController < PantariApplicationController
       redirect to "/personality_analyses/new"
     else
       tweeter = TwitterApiCall.new
+      @twitter_handle = params[:twitter_analysis]
       tweet_text = tweeter.user_tweets(params[:twitter_analysis])
       analysis = PersonalityApiCaller.new(tweet_text).scores_to_hash
       @analysis = PersonAnalysis.create(analysis)
@@ -60,9 +62,24 @@ class PersonalityAnalysesController < PantariApplicationController
     end    
   end
     
+  get '/personality_analyses/:id/edit' do 
+    if logged_in?
+      @analysis = PersonAnalysis.find_by_id(params[:id])
+      @twitter_handle = params[:twitter_analysis]
+      binding.pry
+      if self.current_user.id == @analysis.user_id
+        erb :'personality_analyses/edit_personality'
+      else
+        redirect to '/analyses'
+      end
+    else
+      redirect to '/login'
+    end       
+  end  
 
-
-
+  patch '/personality_analyses/:id' do 
+    #need to complete rdit rout and edit view
+  end   
 
 
   helpers do 

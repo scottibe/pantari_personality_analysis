@@ -12,8 +12,6 @@ class PantariApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, 'shhhit_its_a_secret'
   end
-#this actually worked
-#@ans = PersonAnalysis.create(PersonalityApiCaller.new(File.open("/Users/scottbewick/Development/code/mytext.rtf", "r")).scores_to_hash)
 
   get "/" do
     erb :index

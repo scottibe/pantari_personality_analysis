@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pantari Personality Analysis</title>
+</head>
+<body>
+<h1>Pantari Personality Analysis</h1>
+
+<h3>We all make mistakes. If you entered any incorrect information, you can fix it below. </h3>
+
+  <p>Enter the text you wish to analyze in the box and the name of the author of the text in the author box.</p>  
+  <form method="POST" action="/text_analyses/<%=@analysis.id%>">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <input type="text" name="text_analysis" value="<%=@submitted_text%>"><br><br>
+    <input type="text" name="text_author" value="<%=@analysis.author%>"><br><br>
+    <input type="submit" value="Submit Changes"><br><br>
+  </form>  
+  
+  <h3>Peronality Analysis by Twitter Username</h3>
+    
+    <p>Enter a twitter username in the twitter field to recieve a personality analysis of that user. Write the User's name in the author box.
+    <form method="POST" action="/twitter_analyses/<%=@analysis.id%>">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <input type="text" name="twitter_analysis" value="<%=@twitter_handle%>"><br><br>
+    <input type="text" name="tweeter" value="<%=@analysis.author%>"><br><br>
+    <input type="submit" value="Submit Changes"><br><br>
+  </form>
+</body>
+</html>

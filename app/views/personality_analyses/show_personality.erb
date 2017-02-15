@@ -34,7 +34,8 @@
   <input type="submit" value="Delete Analysis">
 </form><br>
 
-<a href="/personality_analyses/<%=@analysis.id%>/edit">Edit Analysis</a>
-
+<form method="link" action="/personality_analyses/<%= @analysis.id %>/edit">
+<input type="submit" value="Edit Analysis">
+</form>
     
 
