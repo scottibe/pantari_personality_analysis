@@ -22,13 +22,8 @@ class PantariApplicationController < Sinatra::Base
   get '/analyses' do
     if logged_in?
       @user = User.find_by_id(session[:user_id])
-      #need to create a list of analyses by author
-      # PersonAnalysis.all.each do |analysis|
-      #   if analysis.user_id == @user.id
-      #     @user.person_analyses << analysis
-      #   else
-      #     nil
-      #   end                     
+      @user_analyses = @user.person_analyses 
+      # @user_tones = @user.tone_analyses                 
       erb :home 
     else
       redirect to '/login'   

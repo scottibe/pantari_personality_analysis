@@ -1,0 +1,40 @@
+<h1>Welcome, <%= @analysis.user.username %></h1>
+
+<h2>Here is the Pantari Personality Analysis for <%= @analysis.author %></h2>
+
+
+    This analysis contained <strong><%= @analysis.word_count %></strong> words.<br><br>Here are the scores for this analysis.<br>
+  <ul>  
+    <li>agreeableness----------<%= @analysis.agreeableness %><br></li>
+    <li>conscientiousness-----<%= @analysis.conscientiousness %><br></li>
+    <li>extraversion------------<%= @analysis.extraversion %><br></li>
+    <li>emotional range--------<%= @analysis.emotional_range %><br></li>
+    <li>openness----------------<%= @analysis.openness %><br></li>
+    <li>challenge----------------<%= @analysis.challenge %><br></li>
+    <li>closeness---------------<%= @analysis.closeness %><br></li>
+    <li>curiosity----------------<%= @analysis.curiosity %><br></li>
+    <li>excitement--------------<%= @analysis.excitement %><br></li>
+    <li>harmony----------------<%= @analysis.harmony %><br></li>
+    <li>ideal---------------------<%= @analysis.ideal %><br></li>
+    <li>liberty-------------------<%= @analysis.liberty %><br></li>
+    <li>love----------------------<%= @analysis.love %><br></li>
+    <li>practicality--------------<%= @analysis.practicality %><br></li>
+    <li>self-expression---------<%= @analysis.self_expression %><br></li>
+    <li>stability-----------------<%= @analysis.stability %><br></li>
+    <li>structure----------------<%= @analysis.structure %><br></li>
+    <li>conservation------------<%= @analysis.conservation %><br></li>
+    <li>openness-to-change---<%= @analysis.openness_to_change %><br></li>
+    <li>hedonism----------------<%= @analysis.hedonism %><br></li>
+    <li>self-enhancement------<%= @analysis.self_enhancement  %><br></li>
+    <li>self-transcendence-----<%= @analysis.self_transcendence  %><br></li>
+    <br>
+ 
+<form method="post" action="/personality_analyses/<%= @analysis.id %>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Analysis">
+</form><br>
+
+<a href="/personality_analyses/<%=@analysis.id%>/edit">Edit Analysis</a>
+
+    
+

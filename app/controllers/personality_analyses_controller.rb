@@ -18,11 +18,12 @@ class PersonalityAnalysesController < PantariApplicationController
       redirect to "/personality_analyses/new"
     else
       analysis = PersonalityApiCaller.new(params[:text_analysis]).scores_to_hash
-      @personality = PersonAnalysis.create(analysis)
-      @personality.author = params[:author_text]
-      @personality.user_id = session[:user_id]
-      @personality.save
-       
+      @analysis = PersonAnalysis.create(analysis)
+      @analysis.author = params[:text_author]
+      @analysis.user_id = session[:user_id]
+      @analysis.save
+
+      redirect to "/personality_analyses/#{@analysis.id}"
     end  
   end   
 
@@ -38,19 +39,25 @@ class PersonalityAnalysesController < PantariApplicationController
       tweeter = TwitterApiCall.new
       tweet_text = tweeter.user_tweets(params[:twitter_analysis])
       analysis = PersonalityApiCaller.new(tweet_text).scores_to_hash
-      @personality = PersonAnalysis.create(analysis)
-      @personality.author = params[:tweeter]
-      @personality.user_id = session[:user_id]
-      @personality.save
+      @analysis = PersonAnalysis.create(analysis)
+      @analysis.author = params[:tweeter]
+      @analysis.user_id = session[:user_id]
+      @analysis.save
+
+      redirect to "/personality_analyses/#{@analysis.id}"
     end  
-    redirect to "/personality_analyses/#{@personality.id}"
   end 
 
 
 
-  get 'personality_analyses/:id' do
-
-    erb :'/personality_analyses/show_personality'
+  get '/personality_analyses/:id' do
+    if logged_in?
+      @analysis = PersonAnalysis.find_by_id(params[:id])
+      @user = User.find_by_id(params[:id])
+      erb :'/personality_analyses/show_personality'
+    else
+      redirect to 'login'
+    end    
   end
     
 

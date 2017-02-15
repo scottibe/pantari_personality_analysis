@@ -1,13 +1,13 @@
 class UsersController < PantariApplicationController
 #shotgun --server=thin --port=9494 config.ru
-  get '/users/:slug' do 
-    @user = User.find_by_slug(params[:slug])
-    @user.person_analyses
-    erb :home
-  end  
+  # get '/users/:slug' do 
+  #   @user = User.find_by_slug(params[:slug])
+  #   @user.person_analyses
+  #   erb :home
+  # end  
 
   get '/signup' do
-    if logged_in? 
+    if logged_in?
       redirect '/analyses'
     else
       erb :'users/create_user'
