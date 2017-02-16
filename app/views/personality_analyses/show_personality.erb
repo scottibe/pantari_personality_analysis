@@ -1,4 +1,4 @@
-<h1>Welcome, <%= @analysis.user.username %></h1>
+<h1>Hey, What's up <%= @analysis.user.username %>?</h1>
 
 <h2>Here is the Pantari Personality Analysis for <%= @analysis.author %></h2>
 
@@ -28,14 +28,14 @@
     <li>self-enhancement------<%= @analysis.self_enhancement  %><br></li>
     <li>self-transcendence-----<%= @analysis.self_transcendence  %><br></li>
     <br>
- 
-<form method="post" action="/personality_analyses/<%= @analysis.id %>/delete">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Analysis">
-</form><br>
 
 <form method="link" action="/personality_analyses/<%= @analysis.id %>/edit">
 <input type="submit" value="Edit Analysis">
 </form>
+
+<form method="post" action="/personality_analyses/<%= @analysis.id %>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Analysis">
+</form><br>
     
 
