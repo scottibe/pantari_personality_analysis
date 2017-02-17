@@ -11,58 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209203250) do
-
-  create_table "person_analyses", force: :cascade do |t|
-    t.string  "author"
-    t.integer "user_id"
-    t.integer "word_count"
-    t.integer "agreeableness"
-    t.integer "conscientiousness"
-    t.integer "extraversion"
-    t.integer "emotional_range"
-    t.integer "openness"
-    t.integer "challenge"
-    t.integer "closeness"
-    t.integer "curiosity"
-    t.integer "excitement"
-    t.integer "harmony"
-    t.integer "ideal"
-    t.integer "liberty"
-    t.integer "love"
-    t.integer "practicality"
-    t.integer "self_expression"
-    t.integer "stability"
-    t.integer "structure"
-    t.integer "conservation"
-    t.integer "openness_to_change"
-    t.integer "hedonism"
-    t.integer "self_enhancement"
-    t.integer "self_transcendence"
-  end
-
-  create_table "the_tone_analyses", force: :cascade do |t|
-    t.string  "author"
-    t.integer "user_id"
-    t.integer "anger"
-    t.integer "disgust"
-    t.integer "fear"
-    t.integer "joy"
-    t.integer "sadness"
-    t.integer "analytical"
-    t.integer "confident"
-    t.integer "tentative"
-    t.integer "openness"
-    t.integer "conscientiousness"
-    t.integer "extraversion"
-    t.integer "agreeableness"
-    t.integer "emotional_range"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end

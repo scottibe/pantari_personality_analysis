@@ -2,6 +2,7 @@ class CreateTheToneAnalyses < ActiveRecord::Migration
   def change
     create_table :the_tone_analyses do |t|
       t.string :author
+      t.string :tone_text
       t.integer :user_id
       t.integer :anger
       t.integer :disgust

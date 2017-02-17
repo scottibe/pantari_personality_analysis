@@ -13,6 +13,9 @@ Personality_Analysis view page
   -get Analysis button
 
 --Need to put rescue for invalid twitter name
+--Slugify analyses
+--front end
+
 
 
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pantari Tone  Analysis</title>
+</head>
+<body>
+<h1>Pantari Tone Analysis</h1>
+
+<h3>You analyses will be saved under the author's name. Any changes to the author can be made below. </h3>
+
+  <h5>Tone Analysis by Text</h5>
+  <form method="POST" action="/text_tone_analyses/<%=@analysis.id%>">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <input type="text" name="text_author" value="<%=@analysis.author%>"><br><br>
+    <input type="submit" value="Submit Changes"><br><br>
+  </form>  
+  
+  <h5>Personality Analysis by Twitter Username</h5>
+    
+    <form method="POST" action="/twitter_tone_analyses/<%=@analysis.id%>">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <input type="text" name="tweeter" value="<%=@analysis.author%>"><br><br>
+    <input type="submit" value="Submit Changes"><br><br>
+  </form>
+</body>
+</html>

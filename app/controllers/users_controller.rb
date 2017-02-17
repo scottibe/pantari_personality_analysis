@@ -51,8 +51,6 @@ class UsersController < PantariApplicationController
     end   
   end
 
-
-
   helpers do 
 
     def logged_in?

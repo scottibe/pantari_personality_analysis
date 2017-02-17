@@ -1,0 +1,29 @@
+<h1>Hey, What's up <%= @analysis.user.username %>?</h1>
+
+<h2>Here is the Pantari Tone!  Analysis for <%= @analysis.author %></h2>
+
+
+    <br><br>Here are the scores for this analysis.<br>
+  <ul>  
+      agreeableness--------<%= @analysis.agreeableness %><br>
+      analytical--------<%= @analysis.analytical %><br>
+      anger--------<%= @analysis.anger %><br>
+      confident--------<%= @analysis.confident %><br>
+      conscientiousness--------<%= @analysis.conscientiousness %><br>
+      disgust--------<%= @analysis.disgust %><br>
+      emotional_range--------<%= @analysis.emotional_range %><br>
+      extraversion--------<%= @analysis.extraversion %><br>
+      fear--------<%= @analysis.fear %><br>
+      joy--------<%= @analysis.joy %><br>
+      openness--------<%= @analysis.openness %><br>
+      sadness--------<%= @analysis.sadness %><br>
+      tentative--------<%= @analysis.tentative %><br>
+    
+<form method="link" action="/tone_analyses/<%= @analysis.id %>/edit">
+<input type="submit" value="Edit Analysis">
+</form>
+
+<form method="post" action="/tone_analyses/<%= @analysis.id %>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Analysis">
+</form><br>

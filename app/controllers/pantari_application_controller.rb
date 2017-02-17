@@ -40,4 +40,3 @@ class PantariApplicationController < Sinatra::Base
   end  
 
 end
-
