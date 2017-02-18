@@ -10,8 +10,9 @@
 <h3>You analyses will be saved under the author's name. Any changes to the author can be made below. </h3>
 
   <h5>Tone Analysis by Text</h5>
-  <form method="POST" action="/text_tone_analyses/<%=@analysis.id%>">
+  <form method="POST" action="/tone_analyses/<%=@analysis.id%>">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <input type="text" name="text_author" value="<%=@analysis.tone_text%>">
     <input type="text" name="text_author" value="<%=@analysis.author%>"><br><br>
     <input type="submit" value="Submit Changes"><br><br>
   </form>  

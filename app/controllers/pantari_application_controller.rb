@@ -21,7 +21,7 @@ class PantariApplicationController < Sinatra::Base
     if logged_in?
       @user = User.find_by_id(session[:user_id])
       @user_analyses = @user.person_analyses 
-      # @user_tones = @user.tone_analyses                 
+      @user_tones = @user.the_tone_analyses                 
       erb :home 
     else
       redirect to '/login'   
