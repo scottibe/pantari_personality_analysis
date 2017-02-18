@@ -66,6 +66,7 @@ class ToneAnalysesController < PantariApplicationController
   get '/tone_analyses/:id/edit' do 
     if logged_in?
       @analysis = TheToneAnalysis.find_by_id(params[:id])
+      #@analysis.save
       if self.current_user.id == @analysis.user_id
         erb :'tone_analyses/edit_tone'
       else
@@ -81,13 +82,15 @@ class ToneAnalysesController < PantariApplicationController
       redirect to "/tone_analyses/#{params[:id]}/edit"
     else  
       @analysis = TheToneAnalysis.find_by_id(params[:id])
-      @analysis.author = params[:text_author] 
-      @analysis.save
+      tone_analysis = ToneApiCaller.new(params[:text_analysis]).scores_to_hash      
+      @analysis.update(tone_analysis)
+      @analysis.update(author: params[:text_author], tone_text: params[:text_analysis].encode!("UTF-8", invalid: :replace, undef: :replace).force_encoding("utf-8")) 
+
       redirect to "/tone_analyses/#{@analysis.id}"
     end   
   end  
 
-  patch '/twitter_tone_personality_analyses/:id' do 
+  patch '/twitter_tone_analyses/:id' do 
     if params[:tweeter] == "" || params[:tweeter] == nil
       redirect to "/tone_analyses/#{params[:id]}/edit"
     else 
@@ -125,3 +128,4 @@ class ToneAnalysesController < PantariApplicationController
   end  
 
 end
+

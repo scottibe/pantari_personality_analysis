@@ -20,6 +20,7 @@ class UsersController < PantariApplicationController
     else   
     @user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
     session[:user_id] = @user.id 
+    @user.save
     redirect to '/analyses'
     end 
   end   
@@ -36,6 +37,7 @@ class UsersController < PantariApplicationController
     @user = User.find_by(:username => params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      @user.save
       redirect to '/analyses'
     else
       redirect to '/login' 
