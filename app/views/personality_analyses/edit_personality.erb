@@ -19,17 +19,21 @@
   
   <h5>Peronality Analysis by Twitter Username</h5>
     
-    <form method="POST" action="/twitter_personality_analyses/<%=@analysis.id%>">
+    <form method="POST" id="twitter_form" action="/twitter_personality_analyses/<%=@analysis.id%>">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
     <input type="text" name="tweeter" value="<%=@analysis.author%>"><br><br>
-    <input type="text" name="tweeter" value="<%=@analysis.author%>"><br><br>
-    <input type="text" name="twitter_analysis" value="<%=@analysis.tweeter_text%>"><br><br>
-    <input type="submit" value="Submit Changes"><br><br>
   </form>
+  <textarea name="twitter_analysis" form="twitter_form" cols="50" rows="15" value="<%=@analysis.tweeter_text%>"> </textarea><br><br>
 
-  <%=@analysis.tweeter_text %>
+  <input type="submit" value="Submit Changes"><br><br>
 
-  <%=@analysis.person_text%>
+<% if @analysis.tweeter_text != nil %>
+  <h3>Here are the last 200 tweets from <%=@analysis.author %></h3>
+  <%= @analysis.tweeter_text unless @analysis.tweeter_text == nil %>
+<% else %>
+  <h3>Here's all that shit that <%=@analysis.author%> wrote.</h3>
+  <%= @analysis.person_text %>
+<%end%>
 
 
 </body>
