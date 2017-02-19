@@ -3,7 +3,7 @@
 <h2>Here is the Pantari Tone Analysis for <%= @analysis.author %></h2>
 
 
-    <br><br>Here are the scores for this analysis.<br>
+    Here are the scores for this analysis.<br>
   <ul>  
       agreeableness--------<%= @analysis.agreeableness %><br>
       analytical--------<%= @analysis.analytical %><br>
@@ -17,23 +17,27 @@
       joy--------<%= @analysis.joy %><br>
       openness--------<%= @analysis.openness %><br>
       sadness--------<%= @analysis.sadness %><br>
-      tentative--------<%= @analysis.tentative %><br>
+      tentative--------<%= @analysis.tentative %><br><br>
     
 <form method="link" action="/tone_analyses/<%= @analysis.id %>/edit">
 <input type="submit" value="Edit Analysis">
-</form>
+</form><br>
 
 <form method="post" action="/tone_analyses/<%= @analysis.id %>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Analysis">
-</form><br>
+</form>
+
+<br><a href="/analyses">Back to Analyses</a>
 
 <% if @analysis.tweet_text != nil %>
-  <h3>Here are the last 200 tweets from <%=@analysis. %></h3>
-  <%= @analysis.tweet_text.split(". ") unless @analysis.tweet_text == nil %>
-<% else %>
+  <h3>Here are the last 200 tweets from @<%=@analysis.tweeter_username %></h3>
+  <%= @analysis.tweet_text.gsub("���", "'") unless @analysis.tweet_text == nil %>
+<% end %>
+
+<% if @analysis.tone_text %>
   <h3>Here's all that shit that <%=@analysis.author%> wrote.</h3>
-  <%= @analysis.tone_text %>
+  <%= @analysis.tone_text.gsub("���", "'") %>
 <%end%>  
 
 

@@ -30,7 +30,7 @@
     <br>
 
 <form method="link" action="/personality_analyses/<%= @analysis.id %>/edit">
-<input type="submit" value="Edit Analysis">
+<input type="submit" value="Edit Analysis"><br><br>
 </form>
 
 <form method="post" action="/personality_analyses/<%= @analysis.id %>/delete">
@@ -40,11 +40,11 @@
 <a href="/analyses">Back to Analyses</a>
 
 <% if @analysis.tweeter_text != nil %>
-  <h3>Here are the last 200 tweets from <%=@analysis.author %></h3>
+  <h3>Here are the last 200 tweets from @<%=@analysis.tweeter_username %></h3>
   <%= @analysis.tweeter_text unless @analysis.tweeter_text == nil %>
 <% else %>
   <h3>Here's all that shit that <%=@analysis.author%> wrote.</h3>
-  <%= @analysis.person_text %>
+  <%= @analysis.person_text.gsub("���", "'") %>
 <%end%>
 
 

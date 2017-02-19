@@ -46,7 +46,7 @@ class ToneAnalysesController < PantariApplicationController
       @analysis.tweet_text = tweeter.user_tweets(params[:twitter_analysis])
       @analysis.author = params[:tweeter]
       @analysis.tweeter_username = params[:twitter_analysis]
-      @analysis.user_id = params[:id] #session[:user_id]
+      @analysis.user_id = session[:user_id]
       @analysis.save
 
       redirect to "/tone_analyses/#{@analysis.id}"
@@ -83,6 +83,7 @@ class ToneAnalysesController < PantariApplicationController
       redirect to "/tone_analyses/#{params[:id]}/edit"
     else  
       @analysis = TheToneAnalysis.find_by_id(params[:id])
+
       tone_analysis = ToneApiCaller.new(params[:text_analysis]).scores_to_hash      
       @analysis.update(tone_analysis)
       @analysis.update(author: params[:text_author], tone_text: params[:text_analysis].encode!("UTF-8", invalid: :replace, undef: :replace).force_encoding("utf-8")) 

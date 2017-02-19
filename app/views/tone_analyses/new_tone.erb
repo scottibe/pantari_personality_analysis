@@ -10,19 +10,22 @@
 <h3>Tone Analysis by Text</h3>
 
   <p>Enter the text you wish to analyze in the box and the name of the author of the text in the author box.</p>  
-  <form action="/text_tone_analyses" method="POST">
-    <input type="text" name="text_analysis" placeholder="enter text here"><br><br>
+  <form action="/text_tone_analyses" id="text_form" method="POST">
     <input type="text" name="text_author" placeholder="author"><br><br>
     <input type="submit" value="Get Tone Analysis"><br><br>
   </form>  
+  <textarea form="text_form" name="text_analysis" cols="60" rows="20"></textarea>
   
   <h3>Tone Analysis of Twitter Account</h3>
     
-    <p>Enter a twitter username in the twitter field to recieve a personality analysis of that user. Write the User's name in the author box.
+    <p>Enter a twitter username in the twitter field to recieve a tone analysis of that user's tweets. Write the Tweeter's name in the author box.
     <form action="/twitter_tone_analyses" method="POST">
     <input type="text" name="twitter_analysis" placeholder="enter username"><br><br>
     <input type="text" name="tweeter" placeholder="tweeter"><br><br>
     <input type="submit" value="Get Twitter Tone Analysis"><br><br>
   </form>
+
+<a href="/analyses">Back to Analyses</a>
+
 </body>
 </html>

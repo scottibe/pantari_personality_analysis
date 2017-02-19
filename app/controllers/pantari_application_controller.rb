@@ -12,6 +12,7 @@ class PantariApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, 'shhhit_its_a_secret'
+    set :show_exceptions, :after_handler
   end
 
   get "/" do

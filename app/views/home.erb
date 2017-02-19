@@ -3,12 +3,12 @@
   
   <h3>Personality Analyses</h3>
   <% @user_analyses.each do |analysis| %>
-    <a href="/personality_analyses/<%=analysis.id%>"><%= analysis.author %></a>
+    <a href="/personality_analyses/<%=analysis.id%>"><%= analysis.author %><br></a>
   <% end %>  
 
 <h3>Tone Analyses</h3>
   <% @user_tones.each do |tone_analysis| %>
-    <a href="/tone_analyses/<%=tone_analysis.id%>"><%= tone_analysis.author %></a>
+    <a href="/tone_analyses/<%=tone_analysis.id%>"><%= tone_analysis.author %><br></a>
   <% end %>  <br><br>
 
    

@@ -10,12 +10,16 @@
 <h3>You analyses will be saved under the author's name. Any changes to the author can be made below. </h3>
 
   <h5>Personality Analysis by Text</h5>
-  <form method="POST" action="/personality_analyses/<%=@analysis.id%>">
+  <form method="POST" id="text_form" action="/personality_analyses/<%=@analysis.id%>">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
     <input type="text" name="text_author" value="<%=@analysis.author%>"><br><br>
-    <input type="text" name="text_analysis" value="<%=@analysis.person_text%>"><br><br>
-    <input type="submit" value="Submit Changes"><br><br>
-  </form>  
+  </form> 
+
+  <a href="/analyses">Back to Analyses</a>
+
+  <% if @analysis.person_text %>
+    <textarea form="text_form" name="text_analysis" cols="60" rows="20"><%=@analysis.person_text.gsub("���", "'")%> </textarea><br><input type="submit" form="text_form" value="Submit Changes"><br>
+  <%end%> 
   
   <h5>Peronality Analysis by Twitter Username</h5>
     
@@ -23,18 +27,9 @@
     <input id="hidden" type="hidden" name="_method" value="PATCH">
     <input type="text" name="tweeter" value="<%=@analysis.author%>"><br><br>
   </form>
-  <textarea name="twitter_analysis" form="twitter_form" cols="50" rows="15" value="<%=@analysis.tweeter_text%>"> </textarea><br><br>
+  <textarea name="twitter_analysis" form="twitter_form" cols="60" rows="20"><%=@analysis.tweeter_text%> </textarea><br><br>
 
-  <input type="submit" value="Submit Changes"><br><br>
-
-<% if @analysis.tweeter_text != nil %>
-  <h3>Here are the last 200 tweets from <%=@analysis.author %></h3>
-  <%= @analysis.tweeter_text unless @analysis.tweeter_text == nil %>
-<% else %>
-  <h3>Here's all that shit that <%=@analysis.author%> wrote.</h3>
-  <%= @analysis.person_text %>
-<%end%>
-
+  <input type="submit" form="twitter_form" value="Submit Changes"><br>
 
 </body>
 </html>
