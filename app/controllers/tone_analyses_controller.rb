@@ -40,11 +40,13 @@ class ToneAnalysesController < PantariApplicationController
       redirect to "/tone_analyses/new"
     else
       tweeter = TwitterApiCall.new
-      tweet_text = tweeter.user_tweets(params[:twitter_analysis])
-      get_analysis = ToneApiCaller.new(tweet_text).scores_to_hash
+      tweeties = tweeter.user_tweets(params[:twitter_analysis])
+      get_analysis = ToneApiCaller.new(tweeties).scores_to_hash
       @analysis = TheToneAnalysis.create(get_analysis)
+      @analysis.tweet_text = tweeter.user_tweets(params[:twitter_analysis])
       @analysis.author = params[:tweeter]
-      @analysis.user_id = session[:user_id]
+      @analysis.tweeter_username = params[:twitter_analysis]
+      @analysis.user_id = params[:id] #session[:user_id]
       @analysis.save
 
       redirect to "/tone_analyses/#{@analysis.id}"
@@ -66,7 +68,6 @@ class ToneAnalysesController < PantariApplicationController
   get '/tone_analyses/:id/edit' do 
     if logged_in?
       @analysis = TheToneAnalysis.find_by_id(params[:id])
-      #@analysis.save
       if self.current_user.id == @analysis.user_id
         erb :'tone_analyses/edit_tone'
       else

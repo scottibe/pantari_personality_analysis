@@ -15,6 +15,9 @@ ActiveRecord::Schema.define(version: 20170209203250) do
 
   create_table "person_analyses", force: :cascade do |t|
     t.string  "author"
+    t.string  "tweeter_username"
+    t.string  "tweeter_text"
+    t.string  "person_text"
     t.integer "user_id"
     t.integer "word_count"
     t.integer "agreeableness"
@@ -43,7 +46,9 @@ ActiveRecord::Schema.define(version: 20170209203250) do
 
   create_table "the_tone_analyses", force: :cascade do |t|
     t.string  "author"
+    t.string  "tweeter_username"
     t.string  "tone_text"
+    t.string  "tweet_text"
     t.integer "user_id"
     t.integer "anger"
     t.integer "disgust"

@@ -20,9 +20,9 @@ class PersonalityAnalysesController < PantariApplicationController
       analysis = PersonalityApiCaller.new(params[:text_analysis]).scores_to_hash
       @analysis = PersonAnalysis.create(analysis)
       @analysis.author = params[:text_author]
+      @analysis.person_text = params[:text_analysis].encode!("UTF-8", invalid: :replace, undef: :replace).force_encoding("utf-8")
       @analysis.user_id = session[:user_id]
       @analysis.save
-
       redirect to "/personality_analyses/#{@analysis.id}"
     end  
   end   
@@ -37,10 +37,11 @@ class PersonalityAnalysesController < PantariApplicationController
       redirect to "/personality_analyses/new"
     else
       tweeter = TwitterApiCall.new
-      tweet_text = tweeter.user_tweets(params[:twitter_analysis])
-      get_analysis = PersonalityApiCaller.new(tweet_text).scores_to_hash
+      get_analysis = PersonalityApiCaller.new(tweeter.user_tweets(params[:twitter_analysis])).scores_to_hash
       @analysis = PersonAnalysis.create(get_analysis)
+      @analysis.tweeter_text = tweeter.user_tweets(params[:twitter_analysis]).split(": ")      
       @analysis.author = params[:tweeter]
+      @analysis.tweeter_username = params[:twitter_analysis]
       @analysis.user_id = session[:user_id]
       @analysis.save
 
@@ -79,6 +80,7 @@ class PersonalityAnalysesController < PantariApplicationController
     else  
       @analysis = PersonAnalysis.find_by_id(params[:id])
       @analysis.author = params[:text_author] 
+      @analysis.person_text = params[:text_analysis]
       @analysis.save
       redirect to "/personality_analyses/#{@analysis.id}"
     end   
@@ -89,7 +91,8 @@ class PersonalityAnalysesController < PantariApplicationController
       redirect to "/personality_analyses/#{params[:id]}/edit"
     else  
       @analysis = PersonAnalysis.find_by_id(params[:id])
-      @analysis.author = params[:tweeter]                  
+      @analysis.author = params[:tweeter]  
+      @analysis.tweeter_text = params[:twitter_analysis]                
       @analysis.save
       redirect to "/personality_analyses/#{@analysis.id}"
     end   
@@ -97,7 +100,7 @@ class PersonalityAnalysesController < PantariApplicationController
 
   delete '/personality_analyses/:id/delete' do 
     if logged_in?
-      @analysis = PersonAnalysis.find_by(:user_id => params[:id])
+      @analysis = PersonAnalysis.find_by_id(params[:id])
       if current_user.id == @analysis.user_id
         @analysis.destroy
         redirect to '/analyses'

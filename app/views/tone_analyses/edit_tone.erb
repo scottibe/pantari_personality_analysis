@@ -17,12 +17,16 @@
     <input type="submit" value="Submit Changes"><br><br>
   </form>  
   
-  <h5>Personality Analysis by Twitter Username</h5>
+  <h5>Tone Analysis of a Twitter Account</h5>
     
     <form method="POST" action="/twitter_tone_analyses/<%=@analysis.id%>">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
     <input type="text" name="tweeter" value="<%=@analysis.author%>"><br><br>
     <input type="submit" value="Submit Changes"><br><br>
   </form>
+
+  <%=@analysis.tone_text %>
+  <%=@analysis.tweet_text%>
+
 </body>
 </html>

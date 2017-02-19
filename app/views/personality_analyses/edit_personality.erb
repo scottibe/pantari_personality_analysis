@@ -13,6 +13,7 @@
   <form method="POST" action="/personality_analyses/<%=@analysis.id%>">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
     <input type="text" name="text_author" value="<%=@analysis.author%>"><br><br>
+    <input type="text" name="text_analysis" value="<%=@analysis.person_text%>"><br><br>
     <input type="submit" value="Submit Changes"><br><br>
   </form>  
   
@@ -21,7 +22,15 @@
     <form method="POST" action="/twitter_personality_analyses/<%=@analysis.id%>">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
     <input type="text" name="tweeter" value="<%=@analysis.author%>"><br><br>
+    <input type="text" name="tweeter" value="<%=@analysis.author%>"><br><br>
+    <input type="text" name="twitter_analysis" value="<%=@analysis.tweeter_text%>"><br><br>
     <input type="submit" value="Submit Changes"><br><br>
   </form>
+
+  <%=@analysis.tweeter_text %>
+
+  <%=@analysis.person_text%>
+
+
 </body>
 </html>

@@ -37,3 +37,18 @@
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Analysis">
 </form><br>
+<a href="/analyses">Back to Analyses</a>
+
+<% if @analysis.tweeter_text != nil %>
+  <h3>Here are the last 200 tweets from <%=@analysis.author %></h3>
+  <%= @analysis.tweeter_text unless @analysis.tweeter_text == nil %>
+<% else %>
+  <h3>Here's all that shit that <%=@analysis.author%> wrote.</h3>
+  <%= @analysis.person_text %>
+<%end%>
+
+
+
+
+
+

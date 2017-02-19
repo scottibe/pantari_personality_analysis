@@ -2,6 +2,9 @@ class CreatePersonAnalyses < ActiveRecord::Migration
   def change
     create_table :person_analyses do |t|
       t.string :author
+      t.string :tweeter_username
+      t.string :tweeter_text
+      t.string :person_text
       t.integer :user_id
       t.integer :word_count
       t.integer :agreeableness

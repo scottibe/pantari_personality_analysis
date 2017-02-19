@@ -3,9 +3,10 @@ require 'bcrypt'
 require 'excon'
 require '/Users/scottbewick/Development/code/watson_api_for_ruby/lib/personality_analysis'
 require '/Users/scottbewick/Development/code/watson_api_for_ruby/lib/tone_analysis'
+require 'rubygame'
 
 class PantariApplicationController < Sinatra::Base
-
+  
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'

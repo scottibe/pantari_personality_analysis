@@ -27,3 +27,16 @@
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Analysis">
 </form><br>
+
+<% if @analysis.tweet_text != nil %>
+  <h3>Here are the last 200 tweets from <%=@analysis. %></h3>
+  <%= @analysis.tweet_text.split(". ") unless @analysis.tweet_text == nil %>
+<% else %>
+  <h3>Here's all that shit that <%=@analysis.author%> wrote.</h3>
+  <%= @analysis.tone_text %>
+<%end%>  
+
+
+
+
+

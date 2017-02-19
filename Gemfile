@@ -15,3 +15,4 @@ gem "excon"
 gem "dotenv"
 gem "twitter"
 gem "json"
+gem 'rubygame'
