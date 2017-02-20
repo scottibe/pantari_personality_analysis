@@ -1,3 +1,4 @@
+require 'rubygame'
 class PersonalityAnalysesController < PantariApplicationController 
 
   get '/personality_analyses/new' do 

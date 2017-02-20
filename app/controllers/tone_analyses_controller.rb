@@ -1,6 +1,4 @@
-
 class ToneAnalysesController < PantariApplicationController
-  
 
   get '/tone_analyses/new' do
     if logged_in?
@@ -52,8 +50,6 @@ class ToneAnalysesController < PantariApplicationController
       redirect to "/tone_analyses/#{@analysis.id}"
     end  
   end 
-
-
 
   get '/tone_analyses/:id' do
     if logged_in?

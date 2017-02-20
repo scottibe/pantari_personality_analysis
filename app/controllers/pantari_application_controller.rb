@@ -6,7 +6,15 @@ require '/Users/scottbewick/Development/code/watson_api_for_ruby/lib/tone_analys
 require 'rubygame'
 
 class PantariApplicationController < Sinatra::Base
-  
+
+  before do 
+    content_type :txt
+  end
+
+  not_found do 
+    "There's nothing there where you are trying to be"
+  end  
+
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
@@ -21,9 +29,9 @@ class PantariApplicationController < Sinatra::Base
 
   get '/analyses' do
     if logged_in?
-      @user = User.find_by_id(session[:user_id])
-      @user_analyses = @user.person_analyses 
-      @user_tones = @user.the_tone_analyses                 
+      @user ||= User.find_by_id(session[:user_id])
+      @user_analyses ||= @user.person_analyses 
+      @user_tones ||= @user.the_tone_analyses                 
       erb :home 
     else
       redirect to '/login'   
