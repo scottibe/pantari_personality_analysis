@@ -7,27 +7,29 @@
 
 <% if @analysis.openness == nil %>
   <h3>Every program has bugs, but this time it's probably your fault. Either your words weren't good enough or you don't have enough of them. Do better next time.</h3>
+  <p><a href="new"> Try again</a> </p>
 <%end%>  
-  <p><a href="new"> Try again</a> </p>  
+    
 <% if @analysis.agreeableness == nil %>
-  This Analysis contained no words, therefore you get no analysis
+  This Analysis contained no words or stupid words, therefore you get no analysis
 <%else%>
   Here are the scores for this analysis.<br>
 <%end%>  
   <ul>  
-      agreeableness--------<%= @analysis.agreeableness %><br>
-      analytical--------<%= @analysis.analytical %><br>
-      anger--------<%= @analysis.anger %><br>
-      confident--------<%= @analysis.confident %><br>
-      conscientiousness--------<%= @analysis.conscientiousness %><br>
-      disgust--------<%= @analysis.disgust %><br>
-      emotional_range--------<%= @analysis.emotional_range %><br>
-      extraversion--------<%= @analysis.extraversion %><br>
-      fear--------<%= @analysis.fear %><br>
-      joy--------<%= @analysis.joy %><br>
-      openness--------<%= @analysis.openness %><br>
-      sadness--------<%= @analysis.sadness %><br>
-      tentative--------<%= @analysis.tentative %><br><br>
+    <li>agreeableness--------<%= @analysis.agreeableness %></li>
+    <li>analytical--------<%= @analysis.analytical %></li>
+    <li>anger--------<%= @analysis.anger %></li>
+    <li>confident--------<%= @analysis.confident %></li>
+    <li>conscientiousness--------<%= @analysis.conscientiousness %></li>
+    <li>disgust--------<%= @analysis.disgust %></li>
+    <li>emotional_range--------<%= @analysis.emotional_range %></li>
+    <li>extraversion--------<%= @analysis.extraversion %></li>
+    <li>fear--------<%= @analysis.fear %></li>
+    <li>joy--------<%= @analysis.joy %></li>
+    <li>openness--------<%= @analysis.openness %></li>
+    <li>sadness--------<%= @analysis.sadness %></li>
+    <li>tentative--------<%= @analysis.tentative %></li><br>
+  </ul>    
     
 <form method="link" action="/tone_analyses/<%= @analysis.id %>/edit">
 <input type="submit" value="Edit Analysis">

@@ -11,10 +11,10 @@
 
   <p>Enter the text you wish to analyze in the box and the name of the author of the text in the author box.</p>  
   <form action="/text_tone_analyses" id="text_form" method="POST">
-    <input type="text" name="text_author" placeholder="author"><br><br>
-    <input type="submit" value="Get Tone Analysis"><br><br>
   </form>  
-  <textarea form="text_form" name="text_analysis" cols="60" rows="20"></textarea>
+  <textarea form="text_form" name="text_analysis" cols="60" rows="20"></textarea><br><br>
+  <input type="text" name="text_author" form="text_form" placeholder="author"><br><br>
+  <input type="submit" form="text_form" value="Get Tone Analysis"><br><br>
   
   <h3>Tone Analysis of Twitter Account</h3>
     
