@@ -15,20 +15,22 @@
     <input type="text" name="text_author" value="<%=@analysis.author%>"><br><br>
   </form>  
   <% if @analysis.tone_text %>
-    <textarea form="text_form" name="text_analysis" cols="60" rows="20"><%=@analysis.tone_text.gsub("���", "'")%> </textarea><br><input type="submit" form="text_form" value="Submit Changes"><br>
+    <textarea form="text_form" name="text_analysis" cols="60" rows="20"><%=@analysis.tone_text.gsub("���", "'")%> </textarea><br>
+    <input type="submit" form="text_form" value="Submit Changes"><br>
   <%end%>
   
   <br><a href="/analyses">Back to Analyses</a>
 
   <h5>Tone Analysis of a Twitter Account</h5>
     
-    <form method="POST" action="/twitter_tone_analyses/<%=@analysis.id%>" id="twitter_form">
+    <form method="POST" form="twitter_form" action="/twitter_tone_analyses/<%=@analysis.id%>" id="twitter_form">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
     <input type="text" name="tweeter" value="<%=@analysis.author%>"><br>
   </form>
   <% if @analysis.tweet_text%>
     <h3>Here are the last 200 tweets from @<%=@analysis.tweeter_username %></h3>
     <textarea name="twitter_analysis" form="twitter_form" cols="60" rows="20"><%=@analysis.tweet_text%> </textarea><br><br>
+    <input type="submit" form="twitter_form" value="Submit Changes"><br>
   <%else%>
 
   <h3>Here's all that shit that <%=@analysis.author%> wrote.</h3>

@@ -2,52 +2,63 @@
 
 <h2>Here is the Pantari Personality Analysis for <%= @analysis.author %></h2> 
 
-    This analysis contained <strong><%= @analysis.word_count %></strong> words.<br><br>Here are the scores for this analysis.<br>
-  <ul>  
-    <li>agreeableness----------<%= @analysis.agreeableness %><br></li>
-    <li>conscientiousness-----<%= @analysis.conscientiousness %><br></li>
-    <li>extraversion------------<%= @analysis.extraversion %><br></li>
-    <li>emotional range--------<%= @analysis.emotional_range %><br></li>
-    <li>openness----------------<%= @analysis.openness %><br></li>
-    <li>challenge----------------<%= @analysis.challenge %><br></li>
-    <li>closeness---------------<%= @analysis.closeness %><br></li>
-    <li>curiosity----------------<%= @analysis.curiosity %><br></li>
-    <li>excitement--------------<%= @analysis.excitement %><br></li>
-    <li>harmony----------------<%= @analysis.harmony %><br></li>
-    <li>ideal---------------------<%= @analysis.ideal %><br></li>
-    <li>liberty-------------------<%= @analysis.liberty %><br></li>
-    <li>love----------------------<%= @analysis.love %><br></li>
-    <li>practicality--------------<%= @analysis.practicality %><br></li>
-    <li>self-expression---------<%= @analysis.self_expression %><br></li>
-    <li>stability-----------------<%= @analysis.stability %><br></li>
-    <li>structure----------------<%= @analysis.structure %><br></li>
-    <li>conservation------------<%= @analysis.conservation %><br></li>
-    <li>openness-to-change---<%= @analysis.openness_to_change %><br></li>
-    <li>hedonism----------------<%= @analysis.hedonism %><br></li>
-    <li>self-enhancement------<%= @analysis.self_enhancement  %><br></li>
-    <li>self-transcendence-----<%= @analysis.self_transcendence  %><br></li>
-    <br>
-
-<form method="link" action="/personality_analyses/<%= @analysis.id %>/edit">
-<input type="submit" value="Edit Analysis"><br><br>
-</form>
-
-<form method="post" action="/personality_analyses/<%= @analysis.id %>/delete">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Analysis">
-</form><br>
-<a href="/analyses">Back to Analyses</a>
-
-<% if @analysis.tweeter_text != nil %>
-  <h3>Here are the last 200 tweets from @<%=@analysis.tweeter_username %></h3>
-  <%= @analysis.tweeter_text unless @analysis.tweeter_text == nil %>
-<% else %>
-  <h3>Here's all that shit that <%=@analysis.author%> wrote.</h3>
-  <%= @analysis.person_text.gsub("���", "'") %>
+<% if @analysis.openness != nil && flash.has?(:message) %>
+  <%= flash[:message] %>
 <%end%>
 
+<% if @analysis.openness == nil %>
+  <h3>Every program has bugs, but this time it's probably your fault. Either your words weren't good enough or you don't have enough of them. Do better next time.
+<%end%>  
+  </h3><p><a href="new"> Try again</a> </p>  
 
 
+    <% if @analysis.word_count != nil %>
+      This analysis contained <strong><%= @analysis.word_count %></strong>   words.<br><br>
+      Here are the scores for this analysis.<br>
+    <%else%>
+      This Analysis contained no words, therefore you get no analysis
+    <%end%>  
 
-
-
+    <ul>  
+      <li>agreeableness----------<%= @analysis.agreeableness %><br></li>
+      <li>conscientiousness-----<%= @analysis.conscientiousness %><br></li>
+      <li>extraversion------------<%= @analysis.extraversion %><br></li>
+      <li>emotional range--------<%= @analysis.emotional_range %><br></li>
+      <li>openness----------------<%= @analysis.openness %><br></li>
+      <li>challenge----------------<%= @analysis.challenge %><br></li>
+      <li>closeness---------------<%= @analysis.closeness %><br></li>
+      <li>curiosity----------------<%= @analysis.curiosity %><br></li>
+      <li>excitement--------------<%= @analysis.excitement %><br></li>
+      <li>harmony----------------<%= @analysis.harmony %><br></li>
+      <li>ideal---------------------<%= @analysis.ideal %><br></li>
+      <li>liberty-------------------<%= @analysis.liberty %><br></li>
+      <li>love----------------------<%= @analysis.love %><br></li>
+      <li>practicality--------------<%= @analysis.practicality %><br></li>
+      <li>self-expression---------<%= @analysis.self_expression %><br></li>
+      <li>stability-----------------<%= @analysis.stability %><br></li>
+      <li>structure----------------<%= @analysis.structure %><br></li>
+      <li>conservation------------<%= @analysis.conservation %><br></li>
+      <li>openness-to-change---<%= @analysis.openness_to_change %><br></li>
+      <li>hedonism----------------<%= @analysis.hedonism %><br></li>
+      <li>self-enhancement------<%= @analysis.self_enhancement  %><br></li>
+      <li>self-transcendence-----<%= @analysis.self_transcendence  %><br></li>
+    <br>
+  
+  <form method="link" action="/personality_analyses/<%= @analysis.id %>/edit">
+  <input type="submit" value="Edit Analysis"><br><br>
+  </form>
+  
+  <form method="post" action="/personality_analyses/<%= @analysis.id %>/  delete">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Analysis">
+  </form><br>
+  <a href="/analyses">Back to Analyses</a>
+  
+  <% if @analysis.tweeter_text != nil %>
+    <h3>Here are the last 200 tweets from @<%=@analysis.tweeter_username.gsub("@", "") %></h3>
+    <%= @analysis.tweeter_text unless @analysis.tweeter_text == nil %>
+  <% else %>
+    <h3>Here's all that shit that <%=@analysis.author%> wrote.</h3>
+    <%= @analysis.person_text.gsub("���", "'") %>
+  <%end%>
+  

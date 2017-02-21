@@ -1,4 +1,5 @@
 class ToneAnalysesController < PantariApplicationController
+  use Rack::Flash
 
   get '/tone_analyses/new' do
     if logged_in?
@@ -22,6 +23,7 @@ class ToneAnalysesController < PantariApplicationController
       @analysis.tone_text = params[:text_analysis].encode!("UTF-8", invalid: :replace, undef: :replace).force_encoding("utf-8") 
       @analysis.author = params[:text_author]
       @analysis.user_id = session[:user_id]
+      flash[:message] = "Hey hey, look at that, it worked!"
       @analysis.save
 
       redirect to "/tone_analyses/#{@analysis.id}"

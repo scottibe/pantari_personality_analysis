@@ -9,3 +9,5 @@ run PantariApplicationController
 use PersonalityAnalysesController
 use ToneAnalysesController
 use UsersController
+
+use Rack::Flash

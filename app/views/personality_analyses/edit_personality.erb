@@ -14,12 +14,14 @@
     <input id="hidden" type="hidden" name="_method" value="PATCH">
     <input type="text" name="text_author" value="<%=@analysis.author%>"><br><br>
   </form> 
-
-  <a href="/analyses">Back to Analyses</a>
-
+  <br>
   <% if @analysis.person_text %>
-    <textarea form="text_form" name="text_analysis" cols="60" rows="20"><%=@analysis.person_text.gsub("���", "'")%> </textarea><br><input type="submit" form="text_form" value="Submit Changes"><br>
+    <textarea form="text_form" name="text_analysis" cols="60" rows="20"><%=@analysis.person_text.gsub("���", "'")%> </textarea><br>
+    <input type="submit" form="text_form" value="Submit Changes"><br>
   <%end%> 
+
+  <br><a href="/analyses">Back to Analyses</a>
+
   
   <h5>Peronality Analysis by Twitter Username</h5>
     

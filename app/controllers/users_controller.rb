@@ -1,5 +1,5 @@
 class UsersController < PantariApplicationController
-
+  use Rack::Flash
   get '/signup' do
     if logged_in?
       redirect '/analyses'

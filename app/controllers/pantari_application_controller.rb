@@ -4,16 +4,16 @@ require 'excon'
 require '/Users/scottbewick/Development/code/watson_api_for_ruby/lib/personality_analysis'
 require '/Users/scottbewick/Development/code/watson_api_for_ruby/lib/tone_analysis'
 require 'rubygame'
-
+require 'rack-flash'
 class PantariApplicationController < Sinatra::Base
+  use Rack::Flash
+  # before do 
+  #   content_type :txt
+  # end
 
-  before do 
-    content_type :txt
-  end
-
-  not_found do 
-    "There's nothing there where you are trying to be"
-  end  
+  # not_found do 
+  #   "There's nothing there where you are trying to be"
+  # end  
 
   configure do
     set :public_folder, 'public'

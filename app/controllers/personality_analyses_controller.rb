@@ -1,5 +1,6 @@
 require 'rubygame'
 class PersonalityAnalysesController < PantariApplicationController 
+  use Rack::Flash
 
   get '/personality_analyses/new' do 
     if logged_in?
@@ -18,7 +19,10 @@ class PersonalityAnalysesController < PantariApplicationController
       puts "Please enter text or a Twitter username"
       redirect to "/personality_analyses/new"
     else
-      analysis = PersonalityApiCaller.new(params[:text_analysis]).scores_to_hash
+      begin
+        analysis = PersonalityApiCaller.new(params[:text_analysis]).scores_to_hash
+      rescue ArgumentError 
+      end  
       @analysis = PersonAnalysis.create(analysis)
       @analysis.author = params[:text_author]
       @analysis.person_text = params[:text_analysis].encode!("UTF-8", invalid: :replace, undef: :replace).force_encoding("utf-8")
@@ -30,20 +34,26 @@ class PersonalityAnalysesController < PantariApplicationController
 
   post '/twitter_analyses' do 
     if params[:tweeter] == "" || params[:tweeter] == nil
-      puts "Please enter the name of the Twitter User"
       redirect to "/personality_analyses/new"
     elsif
       params[:twitter_analysis] == "" && params[:twitter_analysis] == nil
-      puts "Please enter a Twitter username"
       redirect to "/personality_analyses/new"
     else
       tweeter = TwitterApiCall.new
-      get_analysis = PersonalityApiCaller.new(tweeter.user_tweets(params[:twitter_analysis])).scores_to_hash
+      begin
+        get_analysis = PersonalityApiCaller.new(tweeter.user_tweets(params[:twitter_analysis])).scores_to_hash
+      rescue ArgumentError
+      end
       @analysis = PersonAnalysis.create(get_analysis)
+      if params[:twitter_analysis].length < 200
+        flash[:error] = "If there are no scores in the analysis, your text wasnt long enough or Didn't make no sense."
+      else
+      end  
       @analysis.tweeter_text = tweeter.user_tweets(params[:twitter_analysis]).split(": ")      
       @analysis.author = params[:tweeter]
       @analysis.tweeter_username = params[:twitter_analysis]
       @analysis.user_id = session[:user_id]
+      flash[:message] = "Hey hey, look at that, it worked!"
       @analysis.save
 
       redirect to "/personality_analyses/#{@analysis.id}"
