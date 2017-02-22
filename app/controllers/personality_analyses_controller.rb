@@ -34,9 +34,11 @@ class PersonalityAnalysesController < PantariApplicationController
 
   post '/twitter_analyses' do 
     if params[:tweeter] == "" || params[:tweeter] == nil
+      puts "Please enter a valid username"
       redirect to "/personality_analyses/new"
     elsif
       params[:twitter_analysis] == "" && params[:twitter_analysis] == nil
+      puts "Please enter a valid username"
       redirect to "/personality_analyses/new"
     else
       tweeter = TwitterApiCall.new

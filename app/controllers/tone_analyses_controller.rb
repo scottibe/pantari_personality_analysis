@@ -82,7 +82,6 @@ class ToneAnalysesController < PantariApplicationController
       redirect to "/tone_analyses/#{params[:id]}/edit"
     else  
       @analysis = TheToneAnalysis.find_by_id(params[:id])
-
       tone_analysis = ToneApiCaller.new(params[:text_analysis]).scores_to_hash      
       @analysis.update(tone_analysis)
       @analysis.update(author: params[:text_author], tone_text: params[:text_analysis].encode!("UTF-8", invalid: :replace, undef: :replace).force_encoding("utf-8")) 
@@ -104,7 +103,7 @@ class ToneAnalysesController < PantariApplicationController
 
   delete '/tone_analyses/:id/delete' do 
     if logged_in?
-      @analysis = TheToneAnalysis.find_by(:user_id => params[:id])
+      @analysis = TheToneAnalysis.find_by_id(params[:id])
       if current_user.id == @analysis.user_id
         @analysis.destroy
         redirect to '/analyses'
