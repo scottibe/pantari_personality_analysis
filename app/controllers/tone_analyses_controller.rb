@@ -11,11 +11,9 @@ class ToneAnalysesController < PantariApplicationController
 
   post '/text_tone_analyses' do 
     if params[:text_author] == "" || params[:text_author] == nil
-      #puts "Please enter the author of the text"
       redirect to "/tone_analyses/new"
     elsif
       params[:text_analysis] == "" && params[:text_analysis] == nil
-      #puts "Please enter text or a Twitter username"
       redirect to "/tone_analyses/new"
     else  
       tone_analysis = ToneApiCaller.new(params[:text_analysis]).scores_to_hash
@@ -32,11 +30,9 @@ class ToneAnalysesController < PantariApplicationController
 
   post '/twitter_tone_analyses' do 
     if params[:tweeter] == "" || params[:tweeter] == nil
-      #puts "Please enter the name of the Twitter User"
       redirect to "/tone_analyses/new"
     elsif
       params[:twitter_analysis] == "" && params[:twitter_analysis] == nil
-      #puts "Please enter a Twitter username"
       redirect to "/tone_analyses/new"
     else       
       tweeter = TwitterApiCall.new
