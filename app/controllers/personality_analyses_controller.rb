@@ -28,7 +28,8 @@ class PersonalityAnalysesController < PantariApplicationController
       @analysis.person_text = params[:text_analysis].encode!("UTF-8", invalid: :replace, undef: :replace).force_encoding("utf-8")
       @analysis.user_id = session[:user_id]
       @analysis.save
-      redirect to "/personality_analyses/#{@analysis.id}"
+      flash[:message] = "Analysis Complete!"
+      redirect to "/personality_analyses/#{@analysis.id}" 
     end  
   end   
 
@@ -47,18 +48,14 @@ class PersonalityAnalysesController < PantariApplicationController
       rescue ArgumentError
       end
       @analysis = PersonAnalysis.create(get_analysis)
-      if params[:twitter_analysis].length < 200
-        flash[:error] = "If there are no scores in the analysis, your text wasnt long enough or Didn't make no sense."
-      else
-      end  
       @analysis.tweeter_text = tweeter.user_tweets(params[:twitter_analysis]).split(": ")      
       @analysis.author = params[:tweeter]
       @analysis.tweeter_username = params[:twitter_analysis]
       @analysis.user_id = session[:user_id]
-      flash[:message] = "Hey hey, look at that, it worked!"
+      flash[:message] = "Analysis Complete!"
       @analysis.save
 
-      redirect to "/personality_analyses/#{@analysis.id}"
+      redirect to "/personality_analyses/#{@analysis.id}"  
     end  
   end 
 

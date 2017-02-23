@@ -11,34 +11,34 @@ class ToneAnalysesController < PantariApplicationController
 
   post '/text_tone_analyses' do 
     if params[:text_author] == "" || params[:text_author] == nil
-      puts "Please enter the author of the text"
+      #puts "Please enter the author of the text"
       redirect to "/tone_analyses/new"
     elsif
       params[:text_analysis] == "" && params[:text_analysis] == nil
-      puts "Please enter text or a Twitter username"
+      #puts "Please enter text or a Twitter username"
       redirect to "/tone_analyses/new"
-    else
+    else  
       tone_analysis = ToneApiCaller.new(params[:text_analysis]).scores_to_hash
       @analysis = TheToneAnalysis.create(tone_analysis)
       @analysis.tone_text = params[:text_analysis].encode!("UTF-8", invalid: :replace, undef: :replace).force_encoding("utf-8") 
       @analysis.author = params[:text_author]
       @analysis.user_id = session[:user_id]
-      flash[:message] = "Hey hey, look at that, it worked!"
+      flash[:message] = "Analysis Complete!"
       @analysis.save
 
-      redirect to "/tone_analyses/#{@analysis.id}"
+      redirect to "/tone_analyses/#{@analysis.id}" 
     end  
   end   
 
   post '/twitter_tone_analyses' do 
     if params[:tweeter] == "" || params[:tweeter] == nil
-      puts "Please enter the name of the Twitter User"
+      #puts "Please enter the name of the Twitter User"
       redirect to "/tone_analyses/new"
     elsif
       params[:twitter_analysis] == "" && params[:twitter_analysis] == nil
-      puts "Please enter a Twitter username"
+      #puts "Please enter a Twitter username"
       redirect to "/tone_analyses/new"
-    else
+    else       
       tweeter = TwitterApiCall.new
       tweeties = tweeter.user_tweets(params[:twitter_analysis])
       get_analysis = ToneApiCaller.new(tweeties).scores_to_hash
@@ -49,7 +49,7 @@ class ToneAnalysesController < PantariApplicationController
       @analysis.user_id = session[:user_id]
       @analysis.save
 
-      redirect to "/tone_analyses/#{@analysis.id}"
+      redirect to "/tone_analyses/#{@analysis.id}"    
     end  
   end 
 

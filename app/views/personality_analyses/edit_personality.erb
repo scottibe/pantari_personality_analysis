@@ -7,23 +7,22 @@
 <body>
 <h1>Pantari Personality Analysis</h1>
 
-<h3>You analyses will be saved under the author's name. Any changes to the author can be made below. </h3>
+<h3>Not a whole lot to edit here, but you can change the name of the author if you'd like. </h3>
 
   <h5>Personality Analysis by Text</h5>
   <form method="POST" id="text_form" action="/personality_analyses/<%=@analysis.id%>">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
-    <input type="text" name="text_author" value="<%=@analysis.author%>"><br><br>
+    <input type="text" name="text_author" value="<%=@analysis.author%>"><br>
   </form> 
-  <br>
   <% if @analysis.person_text %>
     <textarea form="text_form" name="text_analysis" cols="60" rows="20"><%=@analysis.person_text.gsub("���", "'")%> </textarea><br>
     <input type="submit" form="text_form" value="Submit Changes"><br>
   <%end%> 
 
-  <br><a href="/analyses">Back to Analyses</a>
+  <br><p>If you would like to run another analysis, click <a href="/analyses">Back to Analyses</a>
 
   
-  <h5>Peronality Analysis by Twitter Username</h5>
+  <h5>Peronality Analysis by Twitter name</h5>
     
     <form method="POST" id="twitter_form" action="/twitter_personality_analyses/<%=@analysis.id%>">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
