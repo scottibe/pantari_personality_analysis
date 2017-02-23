@@ -12,11 +12,9 @@ class PersonalityAnalysesController < PantariApplicationController
 
   post '/text_analyses' do 
     if params[:text_author] == "" || params[:text_author] == nil
-      puts "Please enter the author of the text"
       redirect to "/personality_analyses/new"
     elsif
       params[:text_analysis] == "" && params[:text_analysis] == nil
-      puts "Please enter text or a Twitter username"
       redirect to "/personality_analyses/new"
     else
       begin
@@ -35,11 +33,9 @@ class PersonalityAnalysesController < PantariApplicationController
 
   post '/twitter_analyses' do 
     if params[:tweeter] == "" || params[:tweeter] == nil
-      puts "Please enter a valid username"
       redirect to "/personality_analyses/new"
     elsif
       params[:twitter_analysis] == "" && params[:twitter_analysis] == nil
-      puts "Please enter a valid username"
       redirect to "/personality_analyses/new"
     else
       tweeter = TwitterApiCall.new
