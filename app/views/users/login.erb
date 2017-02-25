@@ -1,25 +1,83 @@
-<h1>Login to Pantari!</h1> 
-  <form action="/login" method="POST"> 
-  <p> 
-    <label for="username"> Your username </label>
-    <input type="text" name="username" id="username"/>
-  </p>
-  <p> 
-    <label for="password"> Your password </label>
-    <input type=" text" name="password" id="password"/> 
-  </p>
 
-  <p> 
-    <label for="email"> Your email address </label>
-    <input type=" text" name="email" id="email"/> 
-  </p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Aladin|Chonburi|Cinzel+Decorative|Crete+Round|Fanwood+Text|Supermercado+One|Volkhov" rel="stylesheet">
 
-  <p class="login button"> 
-    <input type="submit" id="submit" value="Login" /> 
-  </p>
-  <p class="change_link">
-    Not a member yet ?
-  <a href="/signup" class="to_register">Sign Up</a>
-  </p>
-  </form>
-  </div>
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/navbar-fixed-top.css" rel="stylesheet">
+     <link href="../css/bootstrap.css" rel="stylesheet">
+     <link href="../css/signin.css" rel="stylesheet">
+     <style>
+      body {
+      background-image:url('../images/mochaGrunge_@2X.png');
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form action="/login" method="POST" class="form-signin">
+        <h2 class="form-signin-heading">Log in to Pantari</h2>
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input type="Username" name="username" id="inputUsername" class="form-control" placeholder="Username" required>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+      </form>
+    
+      <img src="../images/freudsitting.jpg" class="img-circle" alt="Freud" style="width:204px;height:204px;">
+
+    </div> <!-- /container -->
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/analyses">Pantari Analyzer</a></li>
+            <li><a href="/">Home</a></li>
+
+          
+          </ul>
+          
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+  </body>
+</html>  
+ 

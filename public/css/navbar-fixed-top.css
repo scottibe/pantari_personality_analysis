@@ -1,0 +1,41 @@
+body {
+  min-height: 1600px;
+  padding-top: 70px;
+  color: #121254;
+  background-color: Silver;
+}
+
+/* Adjust Menu colors - Normal */
+.navbar .nav > li > a, .navbar .nav > li > a:first-letter, .navbar-default .navbar-brand {
+color:          LightSlateGray;
+text-shadow:    none;
+font-family: 'Crete Round', serif;
+font-size:      1.2em;
+text-shadow: 3px 2px black;
+text-underline-position: 2px;
+text-decoration: underline;
+}
+
+.btn {
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+}
+
+.navbar {
+  background: linear-gradient(MidnightBlue, Black);
+}
+
+.navbar-default {
+  border-color: Olive;
+  border-style: groove;
+  border-width: 3px;
+}
+
+.navbar-default {
+ float: left;
+  height: 80px;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}

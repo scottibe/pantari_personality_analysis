@@ -38,6 +38,10 @@ class PantariApplicationController < Sinatra::Base
     end  
   end
 
+  get '/learn' do 
+    erb :learn
+  end  
+
    helpers do 
 
     def logged_in?
