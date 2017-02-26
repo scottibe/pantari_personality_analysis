@@ -10,10 +10,12 @@
     <link rel="icon" href="../../favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Aladin|Chonburi|Cinzel+Decorative|Crete+Round|Fanwood+Text|Supermercado+One|Volkhov" rel="stylesheet">
 
-    <title>Signin Template for Bootstrap</title>
+    <title>Get New Pantari</title>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Aladin|Chonburi|Cinzel+Decorative|Crete+Round|Fanwood+Text|Quintessential|Supermercado+One|Volkhov" rel="stylesheet">
 
     <!-- Custom styles for this template -->
      <link href="../css/bootstrap.css" rel="stylesheet">
@@ -30,23 +32,33 @@
     <body>
         <div class="row"><div class="col-md-6"><h1>Pantari Personality Analysis</h1>
             <h3>Personality Analysis by Text</h3>
-            <p>Enter the text you wish to analyze in the box and the name of the author of the text in the author box.</p>  
+            <ul>
+              <li><p>Enter the text you wish to analyze</p></li>
+              <li><p>Enter the name of the author who wrote the text.</p></li>
+              <li><p>To get meaningful results the text should be at least 3000 words.</p></li>
+              <li><p>The higher the word count, the more accurate the analysis will be.</p></li>
           <form action="/text_analyses" class="text_form" id="text_form" method="POST">
-            <input type="text" class="text_form" name="text_author" placeholder="author"><br><br>
+            <input type="text" class="input_form" name="text_author" placeholder="author"><br><br>
           </form>  
-            <textarea form="text_form" class="text_form" name="text_analysis" cols="60" rows="20"></textarea><br><br>
-            <input type="submit" class="text_form" value="Get Personality Analysis" form="text_form"><br><br>
+            <textarea form="text_form" class="text_form" name="text_analysis" cols="50" rows="15"></textarea><br><br>
+            <input type="submit" form="text_form" class="btn btn-lg btn-default" value="Personality Analysis"><br><br>
 
           </div>
 
           <div class="col-md-6"><h1>Pantari Twitter Analysis</h1>
-            <p>Enter a twitter username in the twitter field to recieve a personality analysis of that user. Write the User's name in the tweeter box.</p>
+            <h3>Personality Analysis by Twitter</h3>
+            <uL>
+              <li><p>Enter the username of Twitter user.</p></li>
+              <li><p>Enter the real name of that user.</p></li>
+              <li><p>To get meaningful results the text should be at least 3000 words.</p></li>
+              <li><p>The higher the word count, the more accurate the analysis will be.</p></li>
+            </uL>  
               <form action="/twitter_analyses" method="POST">
-                <input type="text" name="twitter_analysis" placeholder="enter username"><br><br>
-                <input type="text" name="tweeter" placeholder="tweeter"><br><br>
-                <input type="submit" value="Get Twitter Personality Analysis"><br><br>
+                <input type="text" class="input_form" name="twitter_analysis" placeholder="enter username"><br><br>
+                <input type="text" class="input_form" name="tweeter" placeholder="tweeter"><br><br>
+                
+                <input type="submit" class="btn btn-lg btn-default" value="Twitter Analysis"><br><br>
               </form>
-              <a href="/analyses">Back to Analyses</a>
 
           </div>
     
@@ -64,7 +76,6 @@
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li><a href="/analyses">Pantari Analyzer</a></li>
-                <li><a href="/">Home</a></li>
     
               
               </ul>

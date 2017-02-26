@@ -1,0 +1,23 @@
+ <h1>Pantari Personality Analysis - Analyze Anyone's Personality</h1>
+    
+      <h3>Personality Analysis by Text</h3>
+    
+        <p>Enter the text you wish to analyze in the box and the name of the author of the text in the author box.</p>  
+        <form action="/text_analyses" id="text_form" method="POST">
+          <input type="text" name="text_author" placeholder="author"><br><br>
+        </form>  
+          <textarea form="text_form" name="text_analysis" cols="60" rows="20"></textarea><br><br>
+          <input type="submit" value="Get Personality Analysis" form="text_form"><br><br>
+
+
+      <h3>Personality Analysis by Twitter Username</h3>
+        
+        <p>Enter a twitter username in the twitter field to recieve a     personality analysis of that user. Write the User's name in the    tweeter box.</p>
+      <form action="/twitter_analyses" method="POST">
+        <input type="text" name="twitter_analysis" placeholder="enter username"><br><br>
+        <input type="text" name="tweeter" placeholder="tweeter"><br><br>
+        <input type="submit" value="Get Twitter Personality Analysis"><br><br>
+      </form>
+ 
+ 
+      <a href="/analyses">Back to Analyses</a>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    

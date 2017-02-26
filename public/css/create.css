@@ -3,21 +3,23 @@ h4 {
 }
 .row {
   margin-bottom: 20px;
+  margin-left: 20px;
 }
 .row .row {
   margin-top: 10px;
   margin-bottom: 0;
+  margin-left: 20px;
 }
+
 [class*="col-"] {
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: #eee;
   background-color: rgba(86,61,124,.15);
-  border: 1px solid #ddd;
-  border: 1px solid rgba(86,61,124,.2);
-  margin-right: 0px;
-  margin-left: 0px;
-  background-image:url('../images/mochaGrunge_@2X.png'); 
+  border: 0px solid #ddd;
+  border: 0px solid rgba(86,61,124,.2);
+  background-image:url('../images/mochaGrunge_@2X.png');
+  column-rule: 0px; 
 }
 
 hr {
@@ -26,19 +28,43 @@ hr {
   margin-left: 20px;
 }
 
-h1, H3, p {
-  margin-left: 20px;
+h1, h3 {
+  font-family: 'Quintessential', cursive; 
 }
 
 .text_form {
   margin-top: 5px;
-  margin-left: 20px;
+}
+
+.input_form {
+  box-shadow: 7px 7px 5px #121254;
+  background-color: Gainsboro;
+  border-color: MidnightBlue;                             
+
 }
 
 textarea {
   box-shadow: 10px 10px 5px #121254;
-
+  background-color: Gainsboro;
+  border-color: MidnightBlue;
 }
+
+/* Custom default button */
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: Silver;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: DarkSlateGray;
+  border: 1px solid MidnightBlue;
+}
+
+.btn-default:hover {
+  color: Silver;
+  background: linear-gradient(MidnightBlue, Black);
+  border-color: #adadad;
+}
+
 
 
 
