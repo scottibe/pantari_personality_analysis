@@ -47,6 +47,7 @@ textarea {
   box-shadow: 10px 10px 5px #121254;
   background-color: Gainsboro;
   border-color: MidnightBlue;
+  margin-bottom: 20px;
 }
 
 /* Custom default button */
@@ -57,6 +58,8 @@ textarea {
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: DarkSlateGray;
   border: 1px solid MidnightBlue;
+  margin-top: 20px; 
+  
 }
 
 .btn-default:hover {
@@ -64,6 +67,9 @@ textarea {
   background: linear-gradient(MidnightBlue, Black);
   border-color: #adadad;
 }
+
+
+
 
 
 

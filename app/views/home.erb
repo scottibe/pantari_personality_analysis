@@ -1,18 +1,89 @@
-<h1>Welome, <%= @user.username %> </h1>
-<h2>Here are your previous Pantari Analyses</h2>
-  
-  <h3>Personality Analyses</h3>
-  <% @user_analyses.each do |analysis| %>
-    <a href="/personality_analyses/<%=analysis.id%>"><%= analysis.author %><br></a>
-  <% end %>  
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Aladin|Chonburi|Cinzel+Decorative|Crete+Round|Fanwood+Text|Supermercado+One|Volkhov" rel="stylesheet">
+    
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 
-<h3>Tone Analyses</h3>
-  <% @user_tones.each do |tone_analysis| %>
-    <a href="/tone_analyses/<%=tone_analysis.id%>"><%= tone_analysis.author %><br></a>
-  <% end %>  
+    <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-   
+    <link href="https://fonts.googleapis.com/css?family=Aladin|Chonburi|Cinzel+Decorative|Crete+Round|Fanwood+Text|Quintessential|Supermercado+One|Volkhov" rel="stylesheet">
 
-  <a href="/personality_analyses/new">Analyze Personality</a>&nbsp;  &nbsp;
-  <a href="/tone_analyses/new">Analyze Tone</a>&nbsp;  &nbsp;
-  <a href="/logout">Log Out</a>
+    <!-- Custom styles for this template -->
+
+     <link href="../../css/bootstrap.css" rel="stylesheet">
+     <link href="../../css/navbar-fixed-top.css" rel="stylesheet">
+     <link href="../../css/create.css" rel="stylesheet">
+     <link href="../../css/grid.css" rel="stylesheet">
+     <link href="../../css/analyses.css" rel="stylesheet">
+     <style>
+      body {
+      background-image:url('../../images/mochaGrunge_@2X.png');
+      }
+    </style>
+
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-    toggle="collapse" data-target="#navbar" aria-expanded="false"     aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/analyses">Pantari Analyzer</a></li>
+              
+              </ul>
+              
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>  
+
+<div class="row">
+            <div class="col-md-7">
+            
+          
+
+      <h1>Welome, <%= @user.username %> </h1>
+      <h3>Here are your previous Pantari Analyses</h3>
+          <h3>Personality Analyses</h3>
+        <div class="wrapper"> 
+          <div id="btn-btn-btn">
+            <% @user_analyses.each do |analysis| %>
+            <a href="/personality_analyses/<%=analysis.id%>" class="btn btn-lg btn-default"><%= analysis.author %></a>
+            <% end %>  
+          </div>
+        </div>
+          <h3>Tone Analyses</h3>
+        <div class="wrapper"> 
+          <div id="btn-btn-btn">  
+            <% @user_tones.each do |tone_analysis| %>
+            <a href="/tone_analyses/<%=tone_analysis.id%>" class="btn btn-lg btn-default"><%= tone_analysis.author %><br></a>
+            <% end %> <br>
+          </div>
+        </div>
+  <a href="/personality_analyses/new" class="btn btn-lg btn-default">New Personality Analysis</a><br> 
+  <a href="/tone_analyses/new" class="btn btn-lg btn-default">New Tone Analysis</a><br>
+  <a href="/logout" class="btn btn-lg btn-default">Log Out</a>
+     
+        
+
+  </body>
+</html>

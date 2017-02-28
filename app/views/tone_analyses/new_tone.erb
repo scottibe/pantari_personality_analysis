@@ -1,31 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Pantari Tone Analysis</title>
-</head>
-<body>
-<h1>Pantari Tone Analysis - Analyze the tone of any piece of writing</h1>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Aladin|Chonburi|Cinzel+Decorative|Crete+Round|Fanwood+Text|Supermercado+One|Volkhov" rel="stylesheet">
 
-<h3>Tone Analysis by Text</h3>
+    <title>Get New Pantari</title>
 
-  <p>Enter the text you wish to analyze in the box and the name of the author of the text in the author box.</p>  
-  <form action="/text_tone_analyses" id="text_form" method="POST">
-  </form>  
-  <textarea form="text_form" name="text_analysis" cols="60" rows="20"></textarea><br><br>
-  <input type="text" name="text_author" form="text_form" placeholder="author"><br><br>
-  <input type="submit" form="text_form" value="Get Tone Analysis"><br><br>
-  
-  <h3>Tone Analysis of Twitter Account</h3>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Aladin|Chonburi|Cinzel+Decorative|Crete+Round|Fanwood+Text|Quintessential|Supermercado+One|Volkhov" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+     <link href="../css/bootstrap.css" rel="stylesheet">
+     <link href="../css/navbar-fixed-top.css" rel="stylesheet">
+     <link href="../css/create.css" rel="stylesheet">
+     <style>
+      body {
+      background-image:url('../images/mochaGrunge_@2X.png');
+      }
+    </style>
+  </head>
+
+
+    <body>
+        <div class="row"><div class="col-md-6"><h1>Pantari Tone Analysis</h1>
+            <h3>Tone Analysis by Text</h3>
+            <ul>
+              <li><p>Enter the text you wish to analyze</p></li>
+              <li><p>Enter the name of the author who wrote the text.</p></li>
+          <form action="/text_tone_analyses" class="text_form" id="text_form" method="POST">
+          </form>
+            <input type="text" class="input_form" form="text_form" name="text_author" placeholder="author"><br><br>  
+            <textarea form="text_form" class="text_form" name="text_analysis" cols="50" rows="15"></textarea><br><br>
+            <input type="submit" form="text_form" class="btn btn-lg btn-default" value="Tone Analysis"><br><br>
+
+        </div>
+
+          <div class="col-md-6"><h1>Pantari Twitter Analysis</h1>
+            <h3>Tone Analysis by Twitter</h3>
+            <uL>
+              <li><p>Enter the username of Twitter user.</p></li>
+              <li><p>Enter the real name of that user.</p></li> 
+            </uL>  
+              <form action="/twitter_tone_analyses" method="POST">
+                <input type="text" class="input_form" name="twitter_analysis" placeholder="enter username"><br><br>
+                <input type="text" class="input_form" name="tweeter" placeholder="tweeter"><br><br>
+                
+                <input type="submit" class="btn btn-lg btn-default" value="Twitter Tone Analysis"><br><br>
+              </form>
+
+          </div>
     
-    <p>Enter a twitter username in the twitter field to recieve a tone analysis of that user's tweets. Write the Tweeter's name in the author box.
-    <form action="/twitter_tone_analyses" method="POST">
-    <input type="text" name="twitter_analysis" placeholder="enter username"><br><br>
-    <input type="text" name="tweeter" placeholder="tweeter"><br><br>
-    <input type="submit" value="Get Twitter Tone Analysis"><br><br>
-  </form>
-
-<a href="/analyses">Back to Analyses</a>
-
-</body>
-</html>
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-    toggle="collapse" data-target="#navbar" aria-expanded="false"     aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/analyses">Pantari Analyzer</a></li>
+              </ul>
+              
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+    
+    
+    
+    </body>
+    </html>    

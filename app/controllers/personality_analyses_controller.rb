@@ -1,4 +1,3 @@
-require 'rubygame'
 class PersonalityAnalysesController < PantariApplicationController 
   use Rack::Flash
 

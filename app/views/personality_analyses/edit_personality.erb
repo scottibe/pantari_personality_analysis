@@ -1,36 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Pantari Personality Analysis</title>
-</head>
-<body>
-<h1>Pantari Personality Analysis</h1>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Aladin|Chonburi|Cinzel+Decorative|Crete+Round|Fanwood+Text|Supermercado+One|Volkhov" rel="stylesheet">
 
-<h3>Not a whole lot to edit here, but you can change the name of the author if you'd like. </h3>
+    <title>Get New Pantari</title>
 
-  <h5>Personality Analysis by Text</h5>
-  <form method="POST" id="text_form" action="/personality_analyses/<%=@analysis.id%>">
-    <input id="hidden" type="hidden" name="_method" value="PATCH">
-    <input type="text" name="text_author" value="<%=@analysis.author%>"><br>
-  </form> 
-  <% if @analysis.person_text %>
-    <textarea form="text_form" name="text_analysis" cols="60" rows="20"><%=@analysis.person_text.gsub("���", "'")%> </textarea><br>
-    <input type="submit" form="text_form" value="Submit Changes"><br>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Aladin|Chonburi|Cinzel+Decorative|Crete+Round|Fanwood+Text|Quintessential|Supermercado+One|Volkhov" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+     <link href="../../css/bootstrap.css" rel="stylesheet">
+     <link href="../../css/navbar-fixed-top.css" rel="stylesheet">
+     <link href="../../css/create.css" rel="stylesheet">
+     <link href="../../css/grid.css" rel="stylesheet">
+     <style>
+      body {
+      background-image:url('../../images/mochaGrunge_@2X.png');
+      }
+    </style>
+  </head>
+    <body>
+
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-    toggle="collapse" data-target="#navbar" aria-expanded="false"     aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/analyses">Pantari Analyzer</a></li>
+              
+              </ul>
+              
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+
+
+    <h1>Pantari Personality Analysis</h1>    
+ 
+    <% if @analysis.person_text != nil %>
+        <div class="row">
+          <div class="col-md-7"> 
+
+    <h3>Personality Analysis</h3>
+    <form method="POST" action="/personality_analyses/<%=@analysis.id%>" id="text_form">
+      <input id="hidden" type="hidden" name="_method" value="PATCH"> 
+      <input type="text" class="input_form" name="text_author" value="<%=@analysis.author%>"><br><br>
+    </form>
+    <h3>Please feel free to do any of the following: </h3>
+  <ul>
+    <p><li>Edit the name this analysis is saved under</li></p>
+    <p><li><a href="/analyses">Go back to your analyses page </a></li></p>
+    <p><li><a href="https://www.womensmarch.com" target="_blank"> Resist.</a> </li></p>    
+  </ul>
+
+  <h3>Here are <%=@analysis.author%>'s words.</h3>
+    <textarea form="text_form" name="text_analysis" cols="30" rows="15"><%=@analysis.person_text.gsub("���", "'")%> </textarea><br>
+
+  <input type="submit" class="btn btn-lg btn-default" form="text_form" value="Submit Author Change"><br>                         
+
+    <%else @analysis.tweeter_text %>
+    <div class="row">
+        <div class="col-md-7">
+
+  <h3>Personality Twitter Analysis</h3>
+  <form method="POST" action="/twitter_personality_analyses/<%=@analysis.id%>" id="twitter_form">
+    <input id="hidden" type="hidden" name="_method" value="PATCH"> 
+  </form>  
+    <input type="text" class="input_form" form="twitter_form" name="tweeter" value="<%=@analysis.author%>"><br><br> 
+    <h3>Please feel free to do any of the following: </h3>
+  <ul>
+    <p><li>Edit the name this analysis is saved under</li></p>
+    <p><li><a href="/analyses">Go back to your analyses page </a></li></p>
+    <p><li><a href="https://www.womensmarch.com" target="_blank"> Resist.</a> </li></p>    
+  </ul>
+
+  <h3>Here are <%=@analysis.author%>'s tweets.</h3>
+    <textarea form="twitter_form" name="text_analysis" cols="30" rows="15"><%=@analysis.tweeter_text.gsub("���", "'")%> </textarea><br>
+
+  <input type="submit" class="btn btn-lg btn-default" form="twitter_form" value="Submit Author Change"><br>
+
   <%end%> 
 
-  <br><p>If you would like to run another analysis, click <a href="/analyses">Back to Analyses</a>
-
-  
-  <h5>Peronality Analysis by Twitter name</h5>
-    
-    <form method="POST" id="twitter_form" action="/twitter_personality_analyses/<%=@analysis.id%>">
-    <input id="hidden" type="hidden" name="_method" value="PATCH">
-    <input type="text" name="tweeter" value="<%=@analysis.author%>"><br><br>
-  </form>
-  <textarea name="twitter_analysis" form="twitter_form" cols="60" rows="20"><%=@analysis.tweeter_text%> </textarea><br><br>
-
-  <input type="submit" form="twitter_form" value="Submit Changes"><br>
-
-</body>
-</html>
+  </body>
+</html>    
