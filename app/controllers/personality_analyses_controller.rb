@@ -11,10 +11,10 @@ class PersonalityAnalysesController < PantariApplicationController
 
   post '/text_analyses' do 
     if params[:text_author] == "" || params[:text_author] == nil
-      redirect to "/personality_analyses/new"
+      erb :'/personality_analyses/error'
     elsif
       params[:text_analysis] == "" && params[:text_analysis] == nil
-      redirect to "/personality_analyses/new"
+      erb :'/personality_analyses/error'
     else
       begin
         analysis = PersonalityApiCaller.new(params[:text_analysis]).scores_to_hash
@@ -32,15 +32,15 @@ class PersonalityAnalysesController < PantariApplicationController
 
   post '/twitter_analyses' do 
     if params[:tweeter] == "" || params[:tweeter] == nil
-      redirect to "/personality_analyses/new"
+      erb :'/personality_analyses/error'
     elsif
-      params[:twitter_analysis] == "" && params[:twitter_analysis] == nil
-      redirect to "/personality_analyses/new"
+      params[:twitter_analysis] == "" || params[:twitter_analysis] == nil
+      erb :'/personality_analyses/error'
     else
       tweeter = TwitterApiCall.new
       begin
         get_analysis = PersonalityApiCaller.new(tweeter.user_tweets(params[:twitter_analysis])).scores_to_hash
-      rescue ArgumentError
+      rescue NoMethodError
       end
       @analysis = PersonAnalysis.create(get_analysis)
       @analysis.tweeter_text = tweeter.user_tweets(params[:twitter_analysis]).split(": ")      
@@ -53,8 +53,6 @@ class PersonalityAnalysesController < PantariApplicationController
       redirect to "/personality_analyses/#{@analysis.id}"  
     end  
   end 
-
-
 
   get '/personality_analyses/:id' do
     if logged_in?

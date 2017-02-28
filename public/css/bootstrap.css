@@ -116,6 +116,7 @@ textarea {
   margin: 0;
   font: inherit;
   color: inherit;
+  button:focus {outline:0;}
 }
 button {
   overflow: visible;
@@ -130,6 +131,7 @@ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
+  button:focus {outline:0;}
 }
 button[disabled],
 html input[disabled] {
@@ -3019,7 +3021,7 @@ select[multiple].input-lg {
           user-select: none;
   background-image: none;
   border: 1px solid transparent;
-  border-radius: 4px;
+  button:focus {outline:0;}
 }
 .btn:focus,
 .btn:active:focus,
@@ -3027,14 +3029,16 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
+  outline: 0px auto;
+  outline-offset: 0px;
+  button:focus {outline:0;}
 }
 .btn:hover,
 .btn:focus,
 .btn.focus {
-  color: #333;
+  
   text-decoration: none;
+  button:focus {outline:0;}
 }
 .btn:active,
 .btn.active {
@@ -3063,9 +3067,8 @@ fieldset[disabled] a.btn {
 }
 .btn-default:focus,
 .btn-default.focus {
-  color: #333;
-  background-color: #e6e6e6;
-  border-color: #8c8c8c;
+  
+  button:focus {outline:0;}
 }
 .btn-default:hover {
   color: #333;
@@ -3123,6 +3126,7 @@ fieldset[disabled] .btn-default.focus {
   color: #fff;
   background-color: #286090;
   border-color: #122b40;
+  button:focus {outline:0;}
 }
 .btn-primary:hover {
   color: #fff;

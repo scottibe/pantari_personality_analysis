@@ -60,6 +60,16 @@ textarea {
   margin-left: 145px; 
 }
 
+.error h1 {
+  font-size: 5em;
+  color: Red; 
+  text-align: center;
+}
+
+.description {
+  text-align: left;
+}
+
 /* Custom default button */
 .btn,
 .btn-lg,
@@ -83,14 +93,20 @@ textarea {
   color: Silver;
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: DarkSlateGray;
-  border: 1px solid MidnightBlue;
+  border: 1px solid DarkGoldenRod;
   margin-top: 20px; 
   position: center;
   
 }
 
 .wrapper #btn-btn-btn {
-  background-color: Red;
+  background-color: Black;
+
+}
+
+.person .wrapper #btn-btn-btn {
+  background-color: MidnightBlue;
+  box-shadow: Black;
 
 }
 
@@ -204,3 +220,25 @@ ul li {
   widoth: 70%;
   margin: auto;
 }
+
+.tone {
+
+  /*background-color: #0e0e3f;*/
+  margin: -15px;
+  font-size: 1.3em;
+
+}
+
+.foot_tone {
+  text-align: left;
+  /*background-color: Silver;*/
+  margin: -15px;
+  margin-top: -20px;
+
+}
+
+.mid_tone {
+  /*background-color: silver;*/
+  margin: -15px;
+}
+

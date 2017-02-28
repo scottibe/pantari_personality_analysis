@@ -57,27 +57,29 @@
         </nav>  
 
 <div class="row">
-  <div class="col-md-7">
+  <div class="col-md-5">
 
 <h1>Hey, What's up <%= @analysis.user.username %>?</h1>
 
-<h3>Pantari Personality Analysis for <%= @analysis.author %></h3> 
-
   <% if @analysis.openness == nil %>
     <h3>Every program has bugs, but this time it's probably your fault.   Either your words weren't good enough or you don't have enough of them. Do better next time.<br>
-    <p>Try submitting a longer writing sample.</p>
-    </h3><p><a href="new"> Try again</a> </p>
+    <p>You could start by submitting a longer writing sample or an actual Twitter username.</p>
+    </h3>
+    <form method="post" action="/personality_analyses/<%= @analysis.id %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" class="btn btn-lg btn-default" value="Try Again">
   <%else%>    
-
-    <p>This analysis contained <strong><%= @analysis.word_count %></strong>   words.<br>  </p>  
+    <h3>Pantari Personality Analysis for:</h3><h2> <%= @analysis.author %></strong></h2> 
+    <p>This analysis contained <strong><%= @analysis.word_count %></strong>  words.<br>  </p>  
     <p>Results in percentiles</p>
-    <h3>The Big 5 Personality Traits</h3>
+    <h3>The Big 5 Personality Traits</h3><br>
+    <div class="tone">
     <ul>  
       <p><li>agreeableness----------<%= @analysis.agreeableness %>%</li></p>
       <p><li>conscientiousness-----<%= @analysis.conscientiousness %>%</li></p>
       <p><li>extraversion------------<%= @analysis.extraversion %>%</li></p>
       <p><li>emotional range--------<%= @analysis.emotional_range %>%</li></p>
-      <p><li>openness----------------<%= @analysis.openness %>%</li></p>
+      <p><li>openness---------------<%= @analysis.openness %>%</li></p>
       </ul>
       <h3>Needs and the Necessity of Them</h3>
       <ul>
@@ -101,8 +103,9 @@
       <p><li>self-enhancement------<%= @analysis.self_enhancement  %>%</li></p>
       <p><li>self-transcendence-----<%= @analysis.self_transcendence  %>%</li></p>
       </ul>
+      </div>
+      <div class="mid_tone">
     <br> *Analysis should contain at least 3000 words to be accurate
-  
   <form method="link" action="/personality_analyses/<%= @analysis.id %>/edit">
   <input type="submit" class="btn btn-lg btn-default" value="Edit Author"><br><br>
   </form>
@@ -111,8 +114,8 @@
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" class="btn btn-lg btn-default" value="Delete Analysis">
   </form><br>
-  <a href="/analyses" class="btn btn-lg btn-default">Back to Analyses</a> 
-  
+  <a href="/analyses" class="btn btn-lg btn-default">Back to Analyses</a> </div>
+  <div class="foot_tone">
   <% if @analysis.tweeter_text != nil || @analysis.person_text == nil %>
     <h3>Here are the last 200 tweets from @<%=@analysis.tweeter_username.gsub("@", "") %> </h3>
     <%= @analysis.tweeter_text unless @analysis.tweeter_text == nil%>
@@ -122,5 +125,57 @@
   <%end%>
 <%end%>  
 
+  </form>
+  </div>
+  </div>
+
+  <div class="col-md-7">
+    <div class="description">
+    <h1>What Do Your Scores Mean?</h1>
+  <p>Personality Analysis results are developed based on the psychology of language in combination with data analytics algorithms. The characteristics are described in terms of three models: The Big Five, Needs and Values.</p>
+    
+   <p>For each analysis, the Pantari Analyzer, via IBM's Watson AI technology, always reports a normalized score as a percentile for each Big Five, Values, and Needs personality characteristic. Normalized scores represent a percentile ranking for each characteristic based on qualities inferred from the input text. The service computes normalized scores by comparing the raw score for the author's text with results from a sample population.</p>
+  <p>For example, a score of 65% indicates that the author of the text scored in the 65th percentile for that characteristic. The author's writing exhibits the tendency to an extent that is greater than 64 percent and less than 34 percent of the sample population. The precision of the percentile depends on the number of words that were submitted as input with the request. The text should be 3,000 words or more. However, for best results, use 8,000+ words.  </p>
+
+<h3>Descriptions for each category.</h3>
+
+<h3>The Big Five</h3>
+<p><strong>Openness</strong> Appreciation for art, emotion, adventure, unusual ideas, curiosity, and variety of experience. Openness reflects the degree of intellectual curiosity, creativity and a preference for novelty and variety a person has. It is also described as the extent to which a person is imaginative or independent, and depicts a personal preference for a variety of activities over a strict routine.</p> 
+<p>High openness can be perceived as unpredictability or lack of focus. Moreover, individuals with high openness are said to pursue self-actualization specifically by seeking out intense, euphoric experiences, such as skydiving, living abroad, gambling, et cetera. Conversely, those with low openness seek to gain fulfillment through perseverance, and are characterized as pragmatic and data-driven.</p>
+
+<p><strong>conscientiousness</strong> A tendency to be organized and dependable, show self-discipline, act dutifully, aim for achievement, and prefer planned rather than spontaneous behavior. High conscientiousness is often perceived as stubbornness and obsession. Low conscientiousness is associated with flexibility and spontaneity, but can also appear as sloppiness and lack of reliability.</p>
+
+<p><strong>extraversion</strong> Energy, positive emotions, surgency, assertiveness, sociability and the tendency to seek stimulation in the company of others, and talkativeness. High extraversion is often perceived as attention-seeking, and domineering. Low extraversion causes a reserved, reflective personality, which can be perceived as aloof or self-absorbed.
+</p>
+<p><strong>agreeableness</strong> A tendency to be compassionate and cooperative rather than suspicious and antagonistic towards others. It is also a measure of one's trusting and helpful nature, and whether a person is generally well-tempered or not. High agreeableness is often seen as naive or submissive. Low agreeableness personalities are often competitive or challenging people, which can be seen as argumentative or untrustworthy.",
+</p>
+<p><strong>neuroticism</strong> The tendency to experience unpleasant emotions easily, such as anger, anxiety, depression, and vulnerability. Neuroticism also refers to the degree of emotional stability and impulse control and is sometimes referred to by its low pole, 'emotional stability.' A high need for stability manifests as a stable and calm personality, but can be seen as uninspiring and unconcerned. A low need for stability causes a reactive and excitable personality, often very dynamic individuals, but they can be perceived as unstable or insecure.
+</p>
+  <a href="https://en.wikipedia.org/wiki/Big_Five_personality_traits">Learn more about the Big Five</a>
+<h3>Needs - People who score high in...</h3>
+<p><strong>excitement:</strong>  Want to get out there and live life, have upbeat emotions, and want to have fun.</p>
+<p><strong>harmony:</strong> Appreciate other people, their viewpoints, and their feelings.</p>
+<p><strong>curiosity:</strong> Have a desire to discover, find out, and grow.</p>
+<p><strong>ideal:</strong> Desire perfection and a sense of community.</p>
+<p><strong>closeness:</strong> Relish being connected to family and setting up a home.</p>
+<p><strong>self_expression:</strong> Enjoy discovering and asserting their own identities.</p>
+<p><strong>liberty:</strong> Have a desire for fashion and new things, as well as the need for escape.</p>
+<p><strong>love:</strong> Enjoy social contact, whether one-to-one or one-to-many. Any brand that is involved in bringing people together taps this need.</p>
+<p><strong>practicality:</strong> Have a desire to get the job done, a desire for skill and efficiency, which can include physical expression and experience.</p>
+<p><strong>stability:</strong> Seek equivalence in the physical world. They favor the sensible, the tried and tested.</p>
+<p><strong>challenge:</strong> Have an urge to achieve, to succeed, and to take on challenges.</p>
+<p><strong>structure:</strong> Exhibit groundedness and a desire to hold things together. They need things to be well organized and under control.</p>
+
+<h3>Values - People who score high in...  </h3>
+
+<p><strong>helping</strong> Like to help people, they show concern for the welfare and interests of others.</p>
+<p><strong>tradition</strong> Emphasize self-restriction, order, and resistance to change.</p>
+<p><strong>hedonism</strong> Take pleasure in life Seek pleasure and sensuous gratification for themselves.</p>
+<p><strong>self_enhancement</strong> Display a strong desire to achieve personal success.</p>
+<p><strong>open_to_change_and</strong> Emphasize independent action, thought, and feeling, as well as a readiness for new experiences.</p>
+
+
+
+  </div>
 </body>
 </html>

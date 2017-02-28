@@ -76,7 +76,7 @@
 
   <input type="submit" class="btn btn-lg btn-default" form="text_form" value="Submit Author Change"><br>                         
 
-    <%else @analysis.tweeter_text %>
+    <%else @analysis.tweeter_text != nil %>
     <div class="row">
         <div class="col-md-7">
 
@@ -93,7 +93,7 @@
   </ul>
 
   <h3>Here are <%=@analysis.author%>'s tweets.</h3>
-    <textarea form="twitter_form" name="text_analysis" cols="30" rows="15"><%=@analysis.tweeter_text.gsub("���", "'")%> </textarea><br>
+    <textarea form="twitter_form" name="twitter_analysis" cols="30" rows="15"><%=@analysis.tweeter_text.gsub("���", "'")%> </textarea><br>
 
   <input type="submit" class="btn btn-lg btn-default" form="twitter_form" value="Submit Author Change"><br>
 

@@ -28,7 +28,7 @@ hr {
   margin-left: 20px;
 }
 
-h1, h3 {
+h1, h2, h3 {
   font-family: 'Quintessential', cursive; 
 }
 
@@ -47,7 +47,7 @@ textarea {
   box-shadow: 10px 10px 5px #121254;
   background-color: Gainsboro;
   border-color: MidnightBlue;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* Custom default button */
@@ -59,6 +59,9 @@ textarea {
   background-color: DarkSlateGray;
   border: 1px solid MidnightBlue;
   margin-top: 20px; 
+  text-decoration: underline;
+  box-shadow: 10px 10px 5px black;
+  button:focus {outline:0;}
   
 }
 
@@ -66,6 +69,7 @@ textarea {
   color: Silver;
   background: linear-gradient(MidnightBlue, Black);
   border-color: #adadad;
+  button:focus {outline:0;}
 }
 
 

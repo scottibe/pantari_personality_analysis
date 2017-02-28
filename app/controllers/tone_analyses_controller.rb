@@ -11,10 +11,10 @@ class ToneAnalysesController < PantariApplicationController
 
   post '/text_tone_analyses' do 
     if params[:text_author] == "" || params[:text_author] == nil
-      redirect to "/tone_analyses/new"
+      erb :'/tone_analyses/error'
     elsif
       params[:text_analysis] == "" && params[:text_analysis] == nil
-      redirect to "/tone_analyses/new"
+      erb :'/tone_analyses/error'
     else  
       tone_analysis = ToneApiCaller.new(params[:text_analysis]).scores_to_hash
       @analysis = TheToneAnalysis.create(tone_analysis)
@@ -30,10 +30,10 @@ class ToneAnalysesController < PantariApplicationController
 
   post '/twitter_tone_analyses' do 
     if params[:tweeter] == "" || params[:tweeter] == nil
-      redirect to "/tone_analyses/new"
+      erb :'/tone_analyses/error'
     elsif
       params[:twitter_analysis] == "" && params[:twitter_analysis] == nil
-      redirect to "/tone_analyses/new"
+      erb :'/tone_analyses/error'
     else       
       tweeter = TwitterApiCall.new
       tweeties = tweeter.user_tweets(params[:twitter_analysis])

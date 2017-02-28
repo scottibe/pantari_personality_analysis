@@ -20,6 +20,7 @@ needs = {
 :stability => "You Seek equivalence in the physical world. They favor the sensible, the tried and tested.",
 :challenge => "You Have an urge to achieve, to succeed, and to take on challenges.",
 :structure => "You Exhibit groundedness and a desire to hold things together. They need things to be well organized and under control."
+
 }
 
 values = {
@@ -28,8 +29,10 @@ values = {
 :hedonism => "Take pleasure in life Seek pleasure and sensuous gratification for themselves.",
 :self_enhancement => "Display a strong desire to achieve personal success.",
 :open_to_change_and_excitement => "Emphasize independent action, thought, and feeling, as well as a readiness for new experiences."
+
 }
 
 
-#https://en.wikipedia.org/wiki/Big_Five_personality_traits
-#https://www.boundless.com/management/textbooks/boundless-management-textbook/organizational-behavior-5/personality-42/the-big-five-personality-traits-220-3935/
+"https://en.wikipedia.org/wiki/Big_Five_personality_traits"
+
+
