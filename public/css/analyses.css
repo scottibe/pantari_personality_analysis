@@ -100,13 +100,26 @@ textarea {
 }
 
 .wrapper #btn-btn-btn {
-  background-color: Black;
+  background-color: snow;
+  margin-left: -15px;
+  margin-right: -15px;
 
 }
 
 .person .wrapper #btn-btn-btn {
-  background-color: MidnightBlue;
+  background-color: LightGray;
   box-shadow: Black;
+  margin-left: -15px;
+  margin-right: -15px;
+
+}
+
+.create .wrapper #btn-btn-btn {
+  background-color: LightGray;
+  box-shadow: Black;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: -15px
 
 }
 

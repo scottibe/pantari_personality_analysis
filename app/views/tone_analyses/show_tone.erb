@@ -57,7 +57,7 @@
         </nav>  
 
 <div class="row">
-  <div class="col-md-7">
+  <div class="col-md-5">
 
 <h1>Hey, What's up <%= @analysis.user.username %>?</h1>
 
@@ -67,22 +67,22 @@
     <p><a href="new"> Try again</a> </p>
   <%else%>  
     
-<h3>Here is the Pantari Tone Analysis for:<br> <strong><%= @analysis.author %></strong></h3><br>
+<h3>Here is the Pantari Tone Analysis for:<br><br> <strong><%= @analysis.author %></strong></h3><br>
   <div class="tone">
   <ul>  
-    <p><li>agreeableness------------------<%= @analysis.agreeableness %></li></p>
-    <p><li>analytical------------------------<%= @analysis.analytical %></li></p>
-    <p><li>anger----------------------------<%= @analysis.anger %></li></p>
-    <p><li>confident-------------------------<%= @analysis.confident %></li></p>
-    <p><li>conscientiousness-------------<%= @analysis.conscientiousness %></li></p>
-    <p><li>disgust--------------------------<%= @analysis.disgust %></li></p>
-    <p><li>emotional_range---------------<%= @analysis.emotional_range %></li></p>
-    <p><li>extraversion--------------------<%= @analysis.extraversion %></li></p>
-    <p><li>fear-----------------------------<%= @analysis.fear %></li></p>
-    <p><li>joy------------------------------<%= @analysis.joy %></li></p>
-    <p><li>openness----------------------<%= @analysis.openness %></li></p>
-    <p><li>sadness-----------------------<%= @analysis.sadness %></li></p>
-    <p><li>tentative-----------------------<%= @analysis.tentative %></li></p><br>
+    <p><li>agreeableness---------- .<%= @analysis.agreeableness %></li></p>
+    <p><li>analytical---------------- .<%= @analysis.analytical %></li></p>
+    <p><li>anger-------------------- .<%= @analysis.anger %></li></p>
+    <p><li>confident----------------- .<%= @analysis.confident %></li></p>
+    <p><li>conscientiousne------- .<%= @analysis.conscientiousness %></li></p>
+    <p><li>disgust------------------ .<%= @analysis.disgust %></li></p>
+    <p><li>emotional_rang-------- .<%= @analysis.emotional_range %></li></p>
+    <p><li>extraversion------------ .<%= @analysis.extraversion %></li></p>
+    <p><li>fear--------------------- .<%= @analysis.fear %></li></p>
+    <p><li>joy---------------------- .<%= @analysis.joy %></li></p>
+    <p><li>openness-------------- .<%= @analysis.openness %></li></p>
+    <p><li>sadness---------------- .<%= @analysis.sadness %></li></p>
+    <p><li>tentative---------------- .<%= @analysis.tentative %></li></p><br>
   </ul>    
  </div>
  <div class="mid_tone">
@@ -99,16 +99,72 @@
  </div>
   <div class="foot_tone">
   <% if @analysis.tweet_text != nil %>
-    <h3>Here are the last 200 tweets from @<%=@analysis.tweeter_username %></h3>
+    <h3>The last 200 tweets from @<%=@analysis.tweeter_username %></h3>
     <%= @analysis.tweet_text.gsub("���", "'") unless @analysis.tweet_text == nil %>
   <% else %>
-    <h3>Here's all that shit that <%=@analysis.author%> wrote.</h3>
+    <h3>Here is <%=@analysis.author%>'s text.</h3>
     <%= @analysis.tone_text.gsub("���", "'") %>
   <%end%>
 
 <%end%>
+<br><br><br><br><br><br><br>
 </div>
 </div>
-</div>
+
+
+
+<div class="col-md-7">
+    <div class="description">
+  <h1>What Do Your Scores Mean?</h1>
+  <p> also utilizes IBM's Watson AI technology to help people understand tone along three major categories: emotional, social, and language. For each category, the service returns a score in the range 0 - 1 that indicates the probability that the tone exists in the content.</p>
+  <p>Emotional tone measures different types of emotions and feelings that people express. For each emotion, a score of less 0.5 indicates that the emotion is unlikely to be perceived in the content. Likewise, a score greater than 0.75 indicates high likelihood that the emotion will be perceived.</p>
+
+  <h3>Emotional Tone</h3>
+  <p><strong>joy</strong> Joy or happiness has shades of enjoyment,satisfaction and pleasure. There is a sense of well-being, inner peace, love, safety and contentment.</p>
+<p><strong>fear</strong>  A response to impending danger. It is a survival mechanism that is a reaction to some negative stimulus. It may be a mild caution or an extreme phobia.</p>
+<p><strong>sadness</strong> Indicates a feeling of loss and disadvantage. When a person can be observed to be quiet, less energetic and withdrawn, it may be inferred that sadness exists.</p>
+<p><strong>disgust</strong> An emotional response of revulsion to something considered offensive or unpleasant. It is a sensation that refers to something revolting.</p>
+<p><strong>anger</strong> Evoked due to injustice, conflict, humiliation, negligence or betrayal. If anger is active, the individual attacks the target, verbally or physically. If anger is passive, the person silently sulks and feels tension and hostility.</p>
+
+<h3>Social Tone</h3>
+  <p>Low score is anything below 0.5.</p> 
+  <p>A high score is anything above 0.75 </p>
+  <p>Social tone also uses the same Big Five traits that the personality analyzer uses. Below is a brief description of those as well as the tone that is conveyed when a high score is recieved and the tone a low score conveys.</p>
+
+  <p><strong>openness</strong> The extent a person is open to experience a variety of activities.<br>
+    <strong>higher score</strong> More likely to be perceived as no-nonsense, straightforward, blunt, or preferring tradition and the obvious over the complex, ambiguous, and subtle.<br>
+    <strong>lower score</strong> More likely to be perceived as intellectual, curious, emotionally-aware, imaginative, willing to try new things, appreciating beauty, or open to change.</p>
+  
+    <p><strong>conscientiousness</strong> The tendency to act in an organized or thoughtful way.<br>
+    <strong>higher score</strong> More likely to be perceived as spontaneous, laid-back, reckless, unmethodical, remiss, or disorganized.<br>
+    <strong>lower score</strong> More likely to be perceived as disciplined, dutiful, achievement-striving, confident, driven, or organized.</p>
+  
+    <p><strong>extraversion</strong> "The tendency to seek stimulation in the company of others.<br>
+    <strong>higher score</strong> More likely to be perceived as independent, timid, introverted, restrained, boring, or dreary.<br>
+    <strong>lower score</strong> More likely to be perceived as engaging, seeking attention, needy, assertive, outgoing, sociable, cheerful, excitement-seeking, or busy.</p>
+  
+    <p><strong>agreeableness</strong> "The tendency to be compassionate and cooperative towards others.<br>
+    <strong>higher score</strong> More likely to be perceived as selfish, uncaring, uncooperative,  self-interested, confrontational, skeptical, or arrogant.<br>
+    <strong>lower score</strong> More likely to be perceived as caring, sympathetic, cooperative, compromising, trustworthy, or humble.</p>
+  
+    <p><strong>emotional range/neuroticism</strong> "The extent a person's emotion is sensitive to the environment.<br>
+    <strong>higher score</strong> More likely to be perceived as calm, bland, content, relaxed, unconcerned, or careful.<br>
+    <strong>lower score</strong> More likely to be perceived as concerned, frustrated, angry, passionate, upset, stressed, insecure, or impulsive.</p>
+   
+  <h3>Language Tone</h3>
+    <p>Low score is anything below 0.5.</p> 
+    <p>A high score is anything above 0.75 </p>
+    <p>The Language tone describes percieved writing style.</p>
+    <p><strong>analytical</strong>  A person's reasoning and analytical attitude about things.<br>
+    <strong>low score</strong> Little or no evidence of analytical tone.<br>
+    <strong>high score</strong> More likely to be perceived as intellectual, rational, systematic, emotionless, or impersonal.</p>
+
+    <p><strong>confidence</strong> A person's degree of certainty.<br>
+    <strong>low score</strong> Little or no evidence of confidence in tone.<br>
+    <strong>high score</strong> More likely to be perceived as assured, collected, hopeful, or egotistical.</p>
+
+    <p><strong>tentative</strong> A person's degree of inhibition.<br>
+    <strong>low score</strong> Little or no evidence of tentativeness in tone.<br>
+    <strong>high score</strong> More likely to be perceived as questionable, doubtful, or debatable.</p>
 </body>
 </html>
