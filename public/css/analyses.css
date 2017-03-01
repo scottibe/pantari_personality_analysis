@@ -100,14 +100,14 @@ textarea {
 }
 
 .wrapper #btn-btn-btn {
-  background-color: snow;
+  background-color: LightGray;
   margin-left: -15px;
   margin-right: -15px;
 
 }
 
 .person .wrapper btn #btn-btn-btn {
-  background-color: LightGray;
+  background-color: snow;
   box-shadow: Black;
   margin-left: -15px;
   margin-right: -15px;
@@ -116,7 +116,7 @@ textarea {
 }
 
 .create .wrapper #btn-btn-btn {
-  background-color: LightGray;
+  background-color: snow;
   box-shadow: Black;
   margin-left: -15px;
   margin-right: -15px;
