@@ -74,11 +74,11 @@
     <p><li>analytical---------------- .<%= @analysis.analytical %></li></p>
     <p><li>anger-------------------- .<%= @analysis.anger %></li></p>
     <p><li>confident----------------- .<%= @analysis.confident %></li></p>
-    <p><li>conscientiousne------- .<%= @analysis.conscientiousness %></li></p>
-    <p><li>disgust------------------ .<%= @analysis.disgust %></li></p>
+    <p><li>conscientiousness----- .<%= @analysis.conscientiousness %></li></p>
+    <p><li>disgust------------------- .<%= @analysis.disgust %></li></p>
     <p><li>emotional_rang-------- .<%= @analysis.emotional_range %></li></p>
     <p><li>extraversion------------ .<%= @analysis.extraversion %></li></p>
-    <p><li>fear--------------------- .<%= @analysis.fear %></li></p>
+    <p><li>fear----------------------- .<%= @analysis.fear %></li></p>
     <p><li>joy---------------------- .<%= @analysis.joy %></li></p>
     <p><li>openness-------------- .<%= @analysis.openness %></li></p>
     <p><li>sadness---------------- .<%= @analysis.sadness %></li></p>
@@ -99,7 +99,7 @@
  </div>
   <div class="foot_tone">
   <% if @analysis.tweet_text != nil %>
-    <h3>The last 200 tweets from @<%=@analysis.tweeter_username %></h3>
+    <h3>200 tweets from @<%=@analysis.tweeter_username %></h3>
     <%= @analysis.tweet_text.gsub("���", "'") unless @analysis.tweet_text == nil %>
   <% else %>
     <h3>Here is <%=@analysis.author%>'s text.</h3>

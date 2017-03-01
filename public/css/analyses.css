@@ -14,7 +14,7 @@ h4 {
   background-color: #eee;
   background-color: rgba(86,61,124,.15);
   border: 40px Navy;
-  border: 40px Ridge DarkSlateGray;
+  border: 40px Ridge SlateGray;
   text-align: center;
   
   position: centered;
@@ -106,11 +106,12 @@ textarea {
 
 }
 
-.person .wrapper #btn-btn-btn {
+.person .wrapper btn #btn-btn-btn {
   background-color: LightGray;
   box-shadow: Black;
   margin-left: -15px;
   margin-right: -15px;
+
 
 }
 

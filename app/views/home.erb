@@ -66,13 +66,13 @@
           <h3>Your Personality Analyses</h3>
       <div class="person">    
         <div class="wrapper"> 
-          <div id="btn-btn-btn">
+            <div id="btn-btn-btn">
             <% @user_analyses.each do |analysis| %>
             <a href="/personality_analyses/<%=analysis.id%>" class="btn btn-lg btn-default"><%= analysis.author %></a>
-            <% end %>  
+            <% end %>        
           </div>
-        </div>
-      </div>  
+        </div> 
+      </div>
           <h3>Your Tone Analyses</h3>
         <div class="wrapper"> 
           <div id="btn-btn-btn">  

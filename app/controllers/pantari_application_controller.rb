@@ -1,8 +1,8 @@
 require './config/environment'
 require 'bcrypt'
 require 'excon'
-require '/Users/scottbewick/Development/code/watson_api_for_ruby/lib/personality_analysis'
-require '/Users/scottbewick/Development/code/watson_api_for_ruby/lib/tone_analysis'
+require '../watson_api_for_ruby/lib/personality_analysis'
+require '../watson_api_for_ruby/lib/tone_analysis'
 require 'rack-flash'
 class PantariApplicationController < Sinatra::Base
   use Rack::Flash
