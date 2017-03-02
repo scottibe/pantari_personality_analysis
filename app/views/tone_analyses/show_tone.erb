@@ -62,28 +62,72 @@
 <h1>Hey, What's up <%= @analysis.user.username %>?</h1>
 
   <% if @analysis.openness == nil %>
-    <h3>Every program has bugs, but this time it's probably your fault. Either your words weren't good enough or you don't have enough of them.   Do better next time.</h3><br>
-    <h2>This Analysis contained no words or stupid words, therefore you get no analysis</h2>
-    <p><a href="new"> Try again</a> </p>
+    <h3>Many program have bugs, but this time it's probably your fault. Either your words weren't good enough or you don't have enough of them.   Do better next time.</h3><br>
+    <h3>This Analysis contained no words or stupid words, therefore you get no analysis</h3>
+    <form method="post" action="/tone_analyses/<%= @analysis.id %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" class="btn btn-lg btn-default" value="Try Again">
   <%else%>  
     
 <h3>Here is the Pantari Tone Analysis for:<br><br> <strong><%= @analysis.author %></strong></h3><br>
   <div class="tone">
-  <ul>  
-    <p><li>agreeableness---------- .<%= @analysis.agreeableness %></li></p>
-    <p><li>analytical---------------- .<%= @analysis.analytical %></li></p>
-    <p><li>anger-------------------- .<%= @analysis.anger %></li></p>
-    <p><li>confident----------------- .<%= @analysis.confident %></li></p>
-    <p><li>conscientiousness----- .<%= @analysis.conscientiousness %></li></p>
-    <p><li>disgust------------------- .<%= @analysis.disgust %></li></p>
-    <p><li>emotional_rang-------- .<%= @analysis.emotional_range %></li></p>
-    <p><li>extraversion------------ .<%= @analysis.extraversion %></li></p>
-    <p><li>fear----------------------- .<%= @analysis.fear %></li></p>
-    <p><li>joy---------------------- .<%= @analysis.joy %></li></p>
-    <p><li>openness-------------- .<%= @analysis.openness %></li></p>
-    <p><li>sadness---------------- .<%= @analysis.sadness %></li></p>
-    <p><li>tentative---------------- .<%= @analysis.tentative %></li></p><br>
-  </ul>    
+    <table>
+      <tr>
+        <th>Characteristic</th>
+        <th>Score</th>
+      </tr>
+      <tr>  
+        <td>agreeableness</td>
+        <td>.<%= @analysis.agreeableness %></td>
+      </tr>
+      <tr>
+        <td>analytical</td> 
+        <td>.<%= @analysis.analytical %></td>
+      </tr>
+      <tr>
+        <td>anger</td> 
+        <td>.<%= @analysis.anger %></td>
+      </tr>
+      <tr>
+        <td>confident</td> 
+        <td>.<%= @analysis.confident %></td>
+      </tr>
+      <tr>
+        <td>conscientiousness 
+        <td>.<%= @analysis.conscientiousness %></td>
+      </tr>
+      <tr>
+        <td>disgust</td> 
+        <td>.<%= @analysis.disgust %></td>
+      </tr>
+      <tr>
+        <td>emotional_rang</td> 
+        <td>.<%= @analysis.emotional_range %></td>
+      </tr>
+      <tr>
+        <td>extraversion</td> 
+        <td>.<%= @analysis.extraversion %></td>
+      </tr>
+      <tr>
+        <td>fear</td> 
+        <td>.<%= @analysis.fear %></td>
+      </tr>
+      <tr>
+        <td>joy</td> 
+        <td>.<%= @analysis.joy %></td>
+      </tr>
+      <tr>
+        <td>openness</td> 
+        <td>.<%= @analysis.openness %></td>
+      </tr>
+      <tr>
+        <td>sadness</td> 
+        <td>.<%= @analysis.sadness %></td>
+      </tr>
+      <tr>
+        <td>tentative</td> 
+        <td>.<%= @analysis.tentative %></td>
+    </table>        
  </div>
  <div class="mid_tone">
 <form method="link" action="/tone_analyses/<%= @analysis.id %>/edit">

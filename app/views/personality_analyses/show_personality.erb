@@ -68,41 +68,121 @@
     <form method="post" action="/personality_analyses/<%= @analysis.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" class="btn btn-lg btn-default" value="Try Again">
+    </form>
   <%else%>    
     <h3>Personality Analysis for:</h3><h2> <%= @analysis.author %></strong></h2> 
     <p>This analysis contained <strong><%= @analysis.word_count %></strong>  words.<br>  </p>  
     <p>Results in percentiles</p>
     <h3>The Big 5 Personality Traits</h3><br>
     <div class="tone">
-    <ul>  
-      <p><li>agreeableness-----------<%= @analysis.agreeableness %>%</li></p>
-      <p><li>conscientiousness-----<%= @analysis.conscientiousness %>%</li></p>
-      <p><li>extraversion------------<%= @analysis.extraversion %>%</li></p>
-      <p><li>emotional range--------<%= @analysis.emotional_range %>%</li></p>
-      <p><li>openness---------------<%= @analysis.openness %>%</li></p>
-      </ul>
-      <h3>Needs and the Necessity of Them</h3>
-      <ul>
-      <p><li>challenge----------------<%= @analysis.challenge %>%</li></p>
-      <p><li>closeness---------------<%= @analysis.closeness %>%</li></p>
-      <p><li>curiosity----------------<%= @analysis.curiosity %>%</li></p>
-      <p><li>excitement--------------<%= @analysis.excitement %>%</li></p>
-      <p><li>harmony----------------<%= @analysis.harmony %>%</li></p>
-      <p><li>ideal--------------------<%= @analysis.ideal %>%</li></p>
-      <p><li>liberty-------------------<%= @analysis.liberty %>%</li></p>
-      <p><li>love----------------------<%= @analysis.love %>%</li></p>
-      <p><li>practicality--------------<%= @analysis.practicality %>%</li></p>
-      <p><li>self-expression---------<%= @analysis.self_expression %>%</li></p>
-      <p><li>stability-----------------<%= @analysis.stability %>%</li></p>
-      <p><li>structure----------------<%= @analysis.structure %>%</li></p></ul>
-      <h3>The Value of Values</h3>
-      <ul>
-      <p><li>conservation------------<%= @analysis.conservation %>%</li></p>
-      <p><li>openness-to-change---<%= @analysis.openness_to_change %>%</li></p>
-      <p><li>hedonism----------------<%= @analysis.hedonism %>%</li></p>
-      <p><li>self-enhancement------<%= @analysis.self_enhancement  %>%</li></p>
-      <p><li>self-transcendence-----<%= @analysis.self_transcendence  %>%</li></p>
-      </ul>
+    <table>
+      <tr>  
+        <th>Characteristics</th>
+        <th>Score</th>
+      </tr>
+      <tr>  
+      <td>agreeableness </td>
+      <td><%= @analysis.agreeableness %>%</td>
+      </tr>
+      <tr>
+      <td>conscientiousness </td>
+      <td><%= @analysis.conscientiousness %>%</td>
+      </tr>
+      <tr>
+      <td>extraversion </td>
+      <td><%= @analysis.extraversion %>%</td>
+      </tr>
+      <tr>
+      <td>emotional range </td>
+      <td><%= @analysis.emotional_range %>%</td>
+      </tr>
+      <tr>
+      <td>openness </td>
+      <td><%= @analysis.openness %>%</td>
+      </tr>
+    </table>
+    <h3>Needs and the Necessity of Them</h3>
+    <table>  
+    <tr>  
+      <th>Characteristics</th>
+      <th>Score</th>
+    </tr>
+      <tr>
+      <td>challenge</td>
+      <td><%= @analysis.challenge %>%</td>
+      </tr>
+      <tr>
+      <td>closeness</td>
+      <td><%= @analysis.closeness %>%</td>
+      </tr>
+      <tr>
+      <td>curiosity</td>
+      <td><%= @analysis.curiosity %>%</td>
+      </tr>
+      <tr>
+      <td>excitement</td>
+      <td><%= @analysis.excitement %>%</td>
+      </tr>
+      <tr>
+      <td>harmony</td>
+      <td><%= @analysis.harmony %>%</td>
+      </tr>
+      <tr>
+      <td>ideal</td>
+      <td><%= @analysis.ideal %>%</td>
+      </tr>
+      <tr>
+      <td>liberty</td>
+      <td><%= @analysis.liberty %>%</td>
+      </tr>
+      <tr>
+      <td>love</td>
+      <td><%= @analysis.love %>%</td>
+      </tr>
+      <tr>
+      <td>practicality</td>
+      <td><%= @analysis.practicality %>%</td>
+      </tr>
+      <tr>
+      <td>self-expression</td>
+      <td><%= @analysis.self_expression %>%</td>
+      </tr>
+      <tr>
+      <td>stability</td>
+      <td><%= @analysis.stability %>%</td>
+      </tr>
+      <tr>
+      <td>structure</td>
+      <td><%= @analysis.structure %>%</td>
+      </tr>
+    </table>  
+    <h3>The Value of Values</h3>
+    <table>
+      <tr>  
+        <th>Characteristics</th>
+        <th>Score</th>
+      </tr>
+      <tr>
+      <td>conservation</td>
+      <td><%= @analysis.conservation %>%</td>
+      </tr>
+      <tr>
+      <td>openness-to-change</td>
+      <td><%= @analysis.openness_to_change %>%</td>
+      </tr>
+      <tr>
+      <td>hedonism</td>
+      <td><%= @analysis.hedonism %>%</td>
+      </tr>
+      <tr>
+      <td>self-enhancement</td>
+      <td><%= @analysis.self_enhancement  %>%</td>
+      </tr>
+      <tr>
+      <td>self-transcendence</td>
+      <td><%= @analysis.self_transcendence  %>%</td>
+      </tr>
+    </table>  
       </div>
       <div class="mid_tone">
     <br> *Analysis should contain at least 3000 words to be accurate
@@ -173,9 +253,7 @@
 <p><strong>hedonism</strong> Take pleasure in life Seek pleasure and sensuous gratification for themselves.</p>
 <p><strong>self_enhancement</strong> Display a strong desire to achieve personal success.</p>
 <p><strong>open_to_change_and</strong> Emphasize independent action, thought, and feeling, as well as a readiness for new experiences.</p>
-
-
-
   </div>
+</div>
 </body>
 </html>

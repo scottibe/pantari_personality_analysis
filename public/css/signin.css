@@ -50,6 +50,7 @@ button.btn.btn-lg.btn-primary.btn-block {
   color: Silver;
   background-color: DimGray;
   border-color: DarkSlateGray;
+  box-shadow: 10px 10px MidnightBlue;
 }
 
 input#inputUsername.form-control, input#inputEmail.form-control, input#inputPassword.form-control {
@@ -59,7 +60,10 @@ input#inputUsername.form-control, input#inputEmail.form-control, input#inputPass
 img.img-circle {
   display: block;
   margin-left: auto;
-  margin-right: auto 
+  margin-right: auto;
+  box-shadow: 10px 10px Black;
+
+
 }
 
 

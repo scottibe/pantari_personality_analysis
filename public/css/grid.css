@@ -108,7 +108,7 @@ a {
 .btn-default:focus {
   color: Silver;
   text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: Red;
+  background-color: DarkSlateGray;
   border: 1px solid MidnightBlue;
   box-shadow: 5px 5px #121254;
 
