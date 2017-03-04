@@ -20,12 +20,11 @@ class PersonalityAnalysesController < PantariApplicationController
         analysis = PersonalityApiCaller.new(params[:text_analysis]).scores_to_hash
       rescue ArgumentError 
       end  
-      @analysis = PersonAnalysis.create(analysis)
+      @analysis = PersonAnalysis.new(analysis)
       @analysis.author = params[:text_author]
       @analysis.person_text = params[:text_analysis].encode!("UTF-8", invalid: :replace, undef: :replace).force_encoding("utf-8")
       @analysis.user_id = session[:user_id]
       @analysis.save
-      flash[:message] = "Analysis Complete!"
       redirect to "/personality_analyses/#{@analysis.id}" 
     end  
   end   
@@ -42,12 +41,11 @@ class PersonalityAnalysesController < PantariApplicationController
         get_analysis = PersonalityApiCaller.new(tweeter.user_tweets(params[:twitter_analysis])).scores_to_hash
       rescue NoMethodError
       end
-      @analysis = PersonAnalysis.create(get_analysis)
+      @analysis = PersonAnalysis.new(get_analysis)
       @analysis.tweeter_text = tweeter.user_tweets(params[:twitter_analysis]).split(": ")      
       @analysis.author = params[:tweeter]
       @analysis.tweeter_username = params[:twitter_analysis]
       @analysis.user_id = session[:user_id]
-      flash[:message] = "Analysis Complete!"
       @analysis.save
 
       redirect to "/personality_analyses/#{@analysis.id}"  
@@ -114,17 +112,5 @@ class PersonalityAnalysesController < PantariApplicationController
       redirect to 'login'
     end
   end          
-
-
-  helpers do 
-
-    def logged_in?
-      !!session[:user_id]
-    end 
-    
-    def current_user
-      User.find(session[:user_id])
-    end
-  end  
-
+  
 end

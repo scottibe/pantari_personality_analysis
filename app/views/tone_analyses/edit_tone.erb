@@ -60,7 +60,7 @@
       <input type="text" class="input_form" name="text_author" value="<%=@analysis.author%>"><br><br>
     </form>
     <textarea form="text_form" name="text_analysis" cols="60" rows="20"><%=@analysis.tone_text.gsub("���", "'")%> </textarea><br>
-    <input type="submit" form="text_form" class="btn btn-lg btn-default" value="Submit Author Change">
+    <input type="submit" form="text_form" class="btn btn-lg btn-default" value="Submit Changes">
     
 
     <%else @analysis.tweet_text %>
@@ -75,7 +75,7 @@
   <ul>
     <p><li>Edit the name this analysis is saved under</li></p>
     <p><li><a href="/analyses">Go back to your analyses page </a></li></p>
-    <p><li><a href="https://www.resistancerecess.com/event/resist-recess/?akid=178357.36135496.3Myp52&rd=1&t=4" target="_blank"> Resist.</a> </li></p>    
+    <p><li><a href="https://www.aclu.org/" target="_blank"> Resist.</a> </li></p>    
   </ul>
 
   <input type="submit" class="btn btn-lg btn-default" form="twitter_form" value="Submit Author Change"><br>

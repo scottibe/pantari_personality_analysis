@@ -17,11 +17,10 @@ class ToneAnalysesController < PantariApplicationController
       erb :'/tone_analyses/error'
     else  
       tone_analysis = ToneApiCaller.new(params[:text_analysis]).scores_to_hash
-      @analysis = TheToneAnalysis.create(tone_analysis)
+      @analysis = TheToneAnalysis.new(tone_analysis)
       @analysis.tone_text = params[:text_analysis].encode!("UTF-8", invalid: :replace, undef: :replace).force_encoding("utf-8") 
       @analysis.author = params[:text_author]
       @analysis.user_id = session[:user_id]
-      flash[:message] = "Analysis Complete!"
       @analysis.save
 
       redirect to "/tone_analyses/#{@analysis.id}" 
@@ -38,7 +37,7 @@ class ToneAnalysesController < PantariApplicationController
       tweeter = TwitterApiCall.new
       tweeties = tweeter.user_tweets(params[:twitter_analysis])
       get_analysis = ToneApiCaller.new(tweeties).scores_to_hash
-      @analysis = TheToneAnalysis.create(get_analysis)
+      @analysis = TheToneAnalysis.new(get_analysis)
       @analysis.tweet_text = tweeter.user_tweets(params[:twitter_analysis])
       @analysis.author = params[:tweeter]
       @analysis.tweeter_username = params[:twitter_analysis]
@@ -110,18 +109,6 @@ class ToneAnalysesController < PantariApplicationController
       redirect to 'login'
     end
   end          
-
-
-  helpers do 
-
-    def logged_in?
-      !!session[:user_id]
-    end 
-    
-    def current_user
-      User.find(session[:user_id])
-    end
-  end  
-
+  
 end
 

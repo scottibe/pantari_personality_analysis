@@ -4,9 +4,16 @@ This is RubyWrapperWatson. A simple Ruby wrapper for IBM's Watson computer syste
 
 RubyWrapperWatson takes input in two forms. The first is plain text, either in a string or read from a file. The second is a Twitter username. If given a username it will analyze the text from the tweets of that user's timeline and return an object with the personality or tone analysis scores. 
 
-## Usage
+# Install Instructions
+To install, for the repository, then run bundle install from the terminal. 
 
-First, you will need to obtain Watson credentials from: 
+#Usage
+After ```bundle install``` Run shotgun from the terminal and visit localhost:9393. Enter a username, email and password.
+
+
+#Watson API For Ruby
+
+You will need to obtain Watson credentials from: 
 "https://console.ng.bluemix.net/dashboard/apps/"
 
 You must enter the credentials in the .env file in the root directory and match them up with the variables in the constructor methods in PersonalityApiCaller and ToneApiCaller.
