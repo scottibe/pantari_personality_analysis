@@ -1,18 +1,11 @@
 require './config/environment'
 require 'bcrypt'
 require 'excon'
-require '/Users/scottbewick/Development/code/watson_api_for_ruby/lib/personality_analysis.rb'
-require '/Users/scottbewick/Development/code/watson_api_for_ruby/lib/tone_analysis.rb'
+require '../watson_api_for_ruby/lib/personality_analysis.rb'
+require '../watson_api_for_ruby/lib/tone_analysis.rb'
 require 'rack-flash'
 class PantariApplicationController < Sinatra::Base
-  use Rack::Flash
-  # before do 
-  #   content_type :txt
-  # end
-
-  # not_found do 
-  #   "There's nothing there where you are trying to be"
-  # end  
+  use Rack::Flash 
 
   configure do
     set :public_folder, 'public'

@@ -17,7 +17,7 @@ a:hover {
   color: Silver;
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: DarkRed;
-  border: 1px solid #MidnightBlue;
+  border: 3px solid silver;
 }
 
 

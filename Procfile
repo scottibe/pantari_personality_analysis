@@ -1,0 +1,1 @@
+web: bundle exec pantari -C config/pantari.rb
