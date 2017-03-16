@@ -51,7 +51,6 @@ class ToneAnalysesController < PantariApplicationController
   get '/tone_analyses/:id' do
     if logged_in?
       @analysis = TheToneAnalysis.find_by_id(params[:id])
-      # @user = User.find_by_id(params[:id])
       erb :'/tone_analyses/show_tone'
     else
       redirect to 'login'
