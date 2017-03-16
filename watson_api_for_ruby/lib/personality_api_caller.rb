@@ -2,6 +2,7 @@ require_relative "ruby_wrapper_watson/version"
 require 'json'
 require 'excon'
 require "dotenv"
+require 'pry'
   Dotenv.load
 
 class PersonalityApiCaller   

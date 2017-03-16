@@ -21,7 +21,7 @@ class TwitterApiCall
     end  
     rescue Twitter::Error
     end 
-    tweets.clear unless tweets.first != "The powers of my forehead are very substantial and will not be questioned" 
+    tweets.clear unless tweets.first != "Trumpnocare" 
     tweets.join(" ") 
   end 
 end    

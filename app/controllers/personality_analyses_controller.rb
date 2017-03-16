@@ -13,7 +13,7 @@ class PersonalityAnalysesController < PantariApplicationController
     if params[:text_author] == "" || params[:text_author] == nil
       erb :'/personality_analyses/error'
     elsif
-      params[:text_analysis] == "" && params[:text_analysis] == nil
+      params[:text_analysis] == "" || params[:text_analysis] == nil
       erb :'/personality_analyses/error'
     else
       begin
@@ -37,10 +37,10 @@ class PersonalityAnalysesController < PantariApplicationController
       erb :'/personality_analyses/error'
     else
       tweeter = TwitterApiCall.new
-      begin
+      #begin
         get_analysis = PersonalityApiCaller.new(tweeter.user_tweets(params[:twitter_analysis])).scores_to_hash
-      rescue NoMethodError
-      end
+      #rescue NoMethodError
+      #end
       @analysis = PersonAnalysis.new(get_analysis)
       @analysis.tweeter_text = tweeter.user_tweets(params[:twitter_analysis]).split(": ")      
       @analysis.author = params[:tweeter]

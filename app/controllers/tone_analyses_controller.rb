@@ -13,7 +13,7 @@ class ToneAnalysesController < PantariApplicationController
     if params[:text_author] == "" || params[:text_author] == nil
       erb :'/tone_analyses/error'
     elsif
-      params[:text_analysis] == "" && params[:text_analysis] == nil
+      params[:text_analysis] == "" || params[:text_analysis] == nil
       erb :'/tone_analyses/error'
     else  
       tone_analysis = ToneApiCaller.new(params[:text_analysis]).scores_to_hash
@@ -31,7 +31,7 @@ class ToneAnalysesController < PantariApplicationController
     if params[:tweeter] == "" || params[:tweeter] == nil
       erb :'/tone_analyses/error'
     elsif
-      params[:twitter_analysis] == "" && params[:twitter_analysis] == nil
+      params[:twitter_analysis] == "" || params[:twitter_analysis] == nil
       erb :'/tone_analyses/error'
     else       
       tweeter = TwitterApiCall.new
@@ -51,7 +51,7 @@ class ToneAnalysesController < PantariApplicationController
   get '/tone_analyses/:id' do
     if logged_in?
       @analysis = TheToneAnalysis.find_by_id(params[:id])
-      @user = User.find_by_id(params[:id])
+      # @user = User.find_by_id(params[:id])
       erb :'/tone_analyses/show_tone'
     else
       redirect to 'login'
