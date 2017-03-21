@@ -110,4 +110,3 @@ class ToneAnalysesController < PantariApplicationController
   end          
   
 end
-

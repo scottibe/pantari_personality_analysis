@@ -10,8 +10,8 @@ class ToneApiCaller
 
   def initialize(input)
     @url = "https://gateway.watsonplatform.net/tone-analyzer/api"
-    @username = 
-    @password = 
+    @username = "a0b499d7-c2fe-41a5-8f38-552db199f0a8"
+    @password = "Jbj2i4wFURqR"
     @input = input
   end 
 
